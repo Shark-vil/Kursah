@@ -1,4 +1,4 @@
-﻿using NLog.Fluent;
+﻿using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +21,13 @@ namespace Kursah
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Logger logger = LogManager.GetCurrentClassLogger();
+
         public MainWindow()
         {
             InitializeComponent();
 
-            Log.Info("Application started");
+            logger.Info("Application started");
         }
     }
 }
