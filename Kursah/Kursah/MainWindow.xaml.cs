@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog.Fluent;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace Kursah
         public MainWindow()
         {
             InitializeComponent();
+
+            Log.Info("Application started");
         }
     }
 }

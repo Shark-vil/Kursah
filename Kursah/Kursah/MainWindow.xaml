@@ -7,11 +7,6 @@
         mc:Ignorable="d"
         Title="Главное меню" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="262*"/>
-            <ColumnDefinition Width="273*"/>
-            <ColumnDefinition Width="257*"/>
-        </Grid.ColumnDefinitions>
-
+        
     </Grid>
 </Window>
