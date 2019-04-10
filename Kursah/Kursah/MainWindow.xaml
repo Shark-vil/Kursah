@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursah"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Главное меню" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="262*"/>
+            <ColumnDefinition Width="273*"/>
+            <ColumnDefinition Width="257*"/>
+        </Grid.ColumnDefinitions>
+
     </Grid>
 </Window>
