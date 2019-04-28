@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+
+using Kursah.Common;
+using Kursah.View;
+using Kursah.ViewModel;
 
 namespace Kursah
 {
@@ -13,5 +11,13 @@ namespace Kursah
     /// </summary>
     public partial class App : Application
     {
+        public void Start(object sender, StartupEventArgs e)
+        {
+            MainWindowV mainWindow = new MainWindowV()
+            {
+
+            };
+            mainWindow.Show();
+        }
     }
 }
