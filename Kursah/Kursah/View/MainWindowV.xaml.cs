@@ -6,7 +6,7 @@ namespace Kursah.View
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindowV
+    public partial class MainWindowV: Window
     {
         private Logger logger = LogManager.GetCurrentClassLogger();
 

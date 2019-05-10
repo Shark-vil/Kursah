@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище kursahModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="date_complete" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offers_goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="offer_id" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="nmck" Type="float" />
+        </EntityType>
+        <EntityType Name="Payment_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provide_offers_goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="provider_id" Type="int" Nullable="false" />
+          <Property Name="payment_type_id" Type="int" Nullable="false" />
+          <Property Name="delivery_tide" Type="int" Nullable="false" />
+          <Property Name="payment_delay" Type="int" Nullable="false" />
+          <Property Name="good_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Providers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="bad" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище kursahModelContainer">
+          <EntitySet Name="Goods" EntityType="Self.Goods" Schema="kursah" store:Type="Tables" />
+          <EntitySet Name="Offers" EntityType="Self.Offers" Schema="kursah" store:Type="Tables" />
+          <EntitySet Name="Offers_goods" EntityType="Self.Offers_goods" Schema="kursah" store:Type="Tables" />
+          <EntitySet Name="Payment_types" EntityType="Self.Payment_types" Schema="kursah" store:Type="Tables" />
+          <EntitySet Name="Provide_offers_goods" EntityType="Self.Provide_offers_goods" Schema="kursah" store:Type="Tables" />
+          <EntitySet Name="Providers" EntityType="Self.Providers" Schema="kursah" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kursahModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date_complete" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offers_goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="offer_id" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Single" Nullable="false" />
+          <Property Name="nmck" Type="Single" />
+        </EntityType>
+        <EntityType Name="Payment_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provide_offers_goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="provider_id" Type="Int32" Nullable="false" />
+          <Property Name="payment_type_id" Type="Int32" Nullable="false" />
+          <Property Name="delivery_tide" Type="Int32" Nullable="false" />
+          <Property Name="payment_delay" Type="Int32" Nullable="false" />
+          <Property Name="good_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Single" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Providers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bad" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="kursahEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Goods" EntityType="Self.Goods" />
+          <EntitySet Name="Offers" EntityType="Self.Offers" />
+          <EntitySet Name="Offers_goods" EntityType="Self.Offers_goods" />
+          <EntitySet Name="Payment_types" EntityType="Self.Payment_types" />
+          <EntitySet Name="Provide_offers_goods" EntityType="Self.Provide_offers_goods" />
+          <EntitySet Name="Providers" EntityType="Self.Providers" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище kursahModelContainer" CdmEntityContainer="kursahEntities">
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="kursahModel.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers">
+            <EntityTypeMapping TypeName="kursahModel.Offers">
+              <MappingFragment StoreEntitySet="Offers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="date_complete" ColumnName="date_complete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers_goods">
+            <EntityTypeMapping TypeName="kursahModel.Offers_goods">
+              <MappingFragment StoreEntitySet="Offers_goods">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="offer_id" ColumnName="offer_id" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="nmck" ColumnName="nmck" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment_types">
+            <EntityTypeMapping TypeName="kursahModel.Payment_types">
+              <MappingFragment StoreEntitySet="Payment_types">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provide_offers_goods">
+            <EntityTypeMapping TypeName="kursahModel.Provide_offers_goods">
+              <MappingFragment StoreEntitySet="Provide_offers_goods">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="provider_id" ColumnName="provider_id" />
+                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+                <ScalarProperty Name="delivery_tide" ColumnName="delivery_tide" />
+                <ScalarProperty Name="payment_delay" ColumnName="payment_delay" />
+                <ScalarProperty Name="good_id" ColumnName="good_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="kursahModel.Providers">
+              <MappingFragment StoreEntitySet="Providers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="bad" ColumnName="bad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,8 +1,9 @@
 ﻿using System.Windows;
 
-using Kursah.Common;
+using Kursah.Model;
 using Kursah.View;
 using Kursah.ViewModel;
+using Kursah.Common;
 
 namespace Kursah
 {
@@ -15,8 +16,9 @@ namespace Kursah
         {
             MainWindowV mainWindow = new MainWindowV()
             {
-
+                DataContext = new MainViewVM()
             };
+            mainWindow.Closing += (o, arg) => DataBase.Close();
             mainWindow.Show();
         }
     }

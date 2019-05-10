@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace EntityWPF.Common
+namespace Kursah.Common
 {
     public class BoolToVisibleConverter : IValueConverter
     {
