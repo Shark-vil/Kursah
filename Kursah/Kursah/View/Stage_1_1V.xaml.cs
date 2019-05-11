@@ -5,13 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Kursah.Model;
+using Kursah.ViewModel;
 
 namespace Kursah.View
 {
@@ -23,6 +18,18 @@ namespace Kursah.View
         public Stage_1_1V()
         {
             InitializeComponent();
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dataGrid = (DataGrid)sender;
+            Stage_1_1M row = (Stage_1_1M)dataGrid.SelectedItem;
+            List<Stage_1_1M> second = Stage_1_1VM.Stage_1_1_Data.FindAll(item=>item.Provider_name == row.Provider_name);
+            foreach (Stage_1_1M item in second)
+            {
+                dataGrid.SelectedItems.Add(item);
+            }        
+
         }
     }
 }

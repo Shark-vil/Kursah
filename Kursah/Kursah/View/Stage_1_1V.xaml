@@ -18,7 +18,7 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
-            >
+            SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding Provider_name}"
