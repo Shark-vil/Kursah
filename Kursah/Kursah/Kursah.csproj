@@ -131,7 +131,11 @@
     <Compile Include="Model\Provide_offers_goods.cs">
       <DependentUpon>kursah.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Stage_1_1M.cs" />
     <Compile Include="ViewModel\Stage_1_1VM.cs" />
+    <Compile Include="View\AnswerV.xaml.cs">
+      <DependentUpon>AnswerV.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FinalizeV.xaml.cs">
       <DependentUpon>FinalizeV.xaml</DependentUpon>
     </Compile>
@@ -153,6 +157,10 @@
     <Compile Include="View\Stage_4V.xaml.cs">
       <DependentUpon>Stage_4V.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AnswerV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FinalizeV.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,7 +178,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Common\BoolToVisibleConverter.cs" />
-    <Compile Include="Common\DataBase.cs" />
     <Compile Include="ViewModel\MainViewVM.cs" />
     <Compile Include="View\MainWindowV.xaml.cs">
       <DependentUpon>MainWindowV.xaml</DependentUpon>

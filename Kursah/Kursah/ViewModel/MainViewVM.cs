@@ -1,4 +1,4 @@
-﻿using Kursah.Common;
+﻿using Kursah.Model;
 
 namespace Kursah.ViewModel
 {
@@ -6,7 +6,7 @@ namespace Kursah.ViewModel
     {
         public MainViewVM()
         {
-            DataBase.Start();
+            kursahEntities.Start();
 
             Stage_1_1_Context = new Stage_1_1VM();
         }

@@ -54,5 +54,8 @@ namespace Kursah.Model
         public virtual DbSet<Payment_types> Payment_types { get; set; }
         public virtual DbSet<Provide_offers_goods> Provide_offers_goods { get; set; }
         public virtual DbSet<Providers> Providers { get; set; }
+
+        public static void Close()
+            => Instane.Dispose();
     }
 }

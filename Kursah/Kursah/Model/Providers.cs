@@ -17,5 +17,7 @@ namespace Kursah.Model
         public int id { get; set; }
         public string name { get; set; }
         public bool bad { get; set; }
+
+        public ICollection<Provide_offers_goods> provide_Offers_Goods { get; set; }
     }
 }

@@ -11,69 +11,77 @@
     Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="34"/>
-            <RowDefinition/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <md:ColorZone
             md:ShadowAssist.ShadowDepth="Depth2"
             Mode="Dark">
-            
-            <StackPanel
-                VerticalAlignment="Bottom"
-                Orientation="Horizontal"
-                Height="34"
-                CanHorizontallyScroll="True"
-                >
-                <RadioButton
-                    Name="IntroductionRB"
-                    Style="{StaticResource MaterialDesignTabRadioButton}"
-                    BorderThickness="0 0 0 2"
-                    GroupName="Pages"
-                    IsChecked="True"
-                    Content="Введение"/>
-                <RadioButton
-                    Name="Stage_1_1_RB"
-                    Style="{StaticResource MaterialDesignTabRadioButton}"
-                    BorderThickness="0 0 0 2"
-                    GroupName="Pages"
-                    IsChecked="True"
-                    Content="Коммерческие предложения, 1 этап"/>
-                <RadioButton
-                    Name="Stage_1_2_RB"
-                    Style="{StaticResource MaterialDesignTabRadioButton}"
-                    BorderThickness="0 0 0 2"
-                    GroupName="Pages"
-                    IsChecked="True"
-                    Content="Коммерческие предложения, 2 этап"/>
-                <RadioButton
-                    Name="Stage_2_RB"
-                    Style="{StaticResource MaterialDesignTabRadioButton}"
-                    BorderThickness="0 0 0 2"
-                    GroupName="Pages"
-                    IsChecked="True"
-                    Content="Реестр контрактов"/>
-                <RadioButton
-                    Name="Stage_3_RB"
-                    Style="{StaticResource MaterialDesignTabRadioButton}"
-                    BorderThickness="0 0 0 2"
-                    GroupName="Pages"
-                    IsChecked="True"
-                    Content="БД ценовых показателей"/>
-                <RadioButton
-                    Name="Stage_4_RB"
-                    Style="{StaticResource MaterialDesignTabRadioButton}"
-                    BorderThickness="0 0 0 2"
-                    GroupName="Pages"
-                    IsChecked="True"
-                    Content="Затратный метод"/>
-                <RadioButton
-                    Name="FinalizeRB"
-                    Style="{StaticResource MaterialDesignTabRadioButton}"
-                    BorderThickness="0 0 0 2"
-                    GroupName="Pages"
-                    IsChecked="True"
-                    Content="Выбор НМЦК"/>
-            </StackPanel>
+            <ScrollViewer
+                HorizontalScrollBarVisibility="Visible"
+                VerticalScrollBarVisibility="Disabled">
+                <StackPanel
+                    VerticalAlignment="Bottom"
+                    Orientation="Horizontal"
+                    Height="34">
+                    <RadioButton
+                        Name="IntroductionRB"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        BorderThickness="0 0 0 2"
+                        GroupName="Pages"
+                        IsChecked="True"
+                        Content="Введение"/>
+                    <RadioButton
+                        Name="Stage_1_1_RB"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        BorderThickness="0 0 0 2"
+                        GroupName="Pages"
+                        IsChecked="True"
+                        Content="Коммерческие предложения, 1 этап"/>
+                    <RadioButton
+                        Name="Stage_1_2_RB"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        BorderThickness="0 0 0 2"
+                        GroupName="Pages"
+                        IsChecked="True"
+                        Content="Коммерческие предложения, 2 этап"/>
+                    <RadioButton
+                        Name="Stage_2_RB"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        BorderThickness="0 0 0 2"
+                        GroupName="Pages"
+                        IsChecked="True"
+                        Content="Реестр контрактов"/>
+                    <RadioButton
+                        Name="Stage_3_RB"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        BorderThickness="0 0 0 2"
+                        GroupName="Pages"
+                        IsChecked="True"
+                        Content="БД ценовых показателей"/>
+                    <RadioButton
+                        Name="Stage_4_RB"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        BorderThickness="0 0 0 2"
+                        GroupName="Pages"
+                        IsChecked="True"
+                        Content="Затратный метод"/>
+                    <RadioButton
+                        Name="FinalizeRB"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        BorderThickness="0 0 0 2"
+                        GroupName="Pages"
+                        IsChecked="True"
+                        Content="Выбор НМЦК"/>
+                </StackPanel>
+            </ScrollViewer>
         </md:ColorZone>
+        <Grid
+            Grid.Row="1">
+            <local:Stage_1_1V
+                DataContext="{Binding Stage_1_1_Context, Mode=OneTime}"
+                Visibility="{Binding ElementName=Stage_1_1_RB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>
+        </Grid>
     </Grid>
 </Window>
