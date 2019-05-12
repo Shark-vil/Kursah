@@ -23,12 +23,23 @@ namespace Kursah.View
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid dataGrid = (DataGrid)sender;
-            Stage_1_1M row = (Stage_1_1M)dataGrid.SelectedItem;
-            List<Stage_1_1M> second = Stage_1_1VM.Stage_1_1_Data.FindAll(item=>item.Provider_name == row.Provider_name);
+            List<Stage_1_1M> second = new List<Stage_1_1M>();
+
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Stage_1_1M row = (Stage_1_1M)dataGrid.SelectedItems[i];
+
+                foreach (Stage_1_1M item in Stage_1_1VM.Stage_1_1_Data.FindAll(item => item.Provider_name == row.Provider_name))
+                {
+                    if (!second.Contains(item))
+                        second.Add(item);                    
+                }
+            }
+
             foreach (Stage_1_1M item in second)
             {
                 dataGrid.SelectedItems.Add(item);
-            }        
+            }
 
         }
     }

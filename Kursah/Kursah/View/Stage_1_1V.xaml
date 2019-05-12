@@ -10,16 +10,39 @@
     d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
             <RowDefinition Height="20"/>
+            <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
+        <StackPanel
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="Минимальная цена: "
+                Margin="20 0"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="{Binding MinPrice, Mode=OneWay}"
+                Margin="20 0"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="Максимальная цена: "
+                Margin="20 0"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="{Binding MaxPrice, Mode=OneWay}"
+                Margin="20 0"/>
+        </StackPanel>
         <DataGrid
+            Grid.Row="1"
             ItemsSource="{Binding Stage_1_1_Data, Mode=OneWay}"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
             SelectionChanged="DataGrid_SelectionChanged">
-            <DataGrid.Columns>
+            <DataGrid.Columns>                
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding Provider_name}"
                     Header="Поставщик"
@@ -29,11 +52,33 @@
                     Header="Товар"
                     Width="200"/>
                 <md:MaterialDataGridTextColumn
-                    Binding="{Binding Good_price}"
+                    Binding="{Binding GoodPrice}"
                     Header="Цена"
                     Width="200"/>
             </DataGrid.Columns>
-            
         </DataGrid>
+        <Grid
+            Grid.Row="3"
+            Margin="50,10"
+            VerticalAlignment="Center" Height="110">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                Margin="0,0,32,0"
+                VerticalAlignment="Top"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                md:HintAssist.Hint="Вывод:"
+                Grid.Column="0"
+                Height="110"/>
+            <Button
+                Grid.Column="1"
+                Width="100"
+                Content="Далее"/>
+        </Grid>
     </Grid>
 </UserControl>

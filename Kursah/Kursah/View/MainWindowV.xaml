@@ -13,7 +13,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="54"/>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <md:ColorZone
             md:ShadowAssist.ShadowDepth="Depth2"

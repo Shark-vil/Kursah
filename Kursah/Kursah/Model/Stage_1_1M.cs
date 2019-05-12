@@ -4,10 +4,12 @@
     {
         public string Provider_name { get; set; }
         public string Good_name { get; set; }
-        public string Good_price { get; set; }
+        public string GoodPrice { get; set; }
+        public bool IsSelected { get; set; }
+
         public override string ToString()
         {
-            return string.Concat(Provider_name, " ", Good_name, " ", Good_price);
+            return string.Concat(Provider_name, " ", Good_name, " ", GoodPrice);
         }
     }
 }
