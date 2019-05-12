@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="54"/>
             <RowDefinition Height="3*"/>
+            <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
         <md:ColorZone
             md:ShadowAssist.ShadowDepth="Depth2"
@@ -30,49 +31,56 @@
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
                         IsChecked="True"
-                        Content="Введение"/>
+                        Content="Введение" 
+                        Checked="RadioButtonsChecked"/>
                     <RadioButton
                         Name="Stage_1_1_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
-                        IsChecked="True"
-                        Content="Коммерческие предложения, 1 этап"/>
+                        IsChecked="False"                        
+                        Content="Коммерческие предложения, 1 этап"
+                        Checked="RadioButtonsChecked"/>
                     <RadioButton
                         Name="Stage_1_2_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
-                        IsChecked="True"
-                        Content="Коммерческие предложения, 2 этап"/>
+                        IsChecked="False"
+                        Content="Коммерческие предложения, 2 этап"
+                        Checked="RadioButtonsChecked"/>
                     <RadioButton
                         Name="Stage_2_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
-                        IsChecked="True"
-                        Content="Реестр контрактов"/>
+                        IsChecked="False"
+                        Content="Реестр контрактов"
+                        Checked="RadioButtonsChecked"/>
                     <RadioButton
                         Name="Stage_3_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
-                        IsChecked="True"
-                        Content="БД ценовых показателей"/>
+                        IsChecked="False"
+                        Content="БД ценовых показателей"
+                        Checked="RadioButtonsChecked"/>
                     <RadioButton
                         Name="Stage_4_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
-                        IsChecked="True"
-                        Content="Затратный метод"/>
+                        IsChecked="False"
+                        Content="Затратный метод"
+                        Checked="RadioButtonsChecked"/>
                     <RadioButton
                         Name="FinalizeRB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
-                        IsChecked="True"
-                        Content="Выбор НМЦК"/>
+                        IsChecked="False"
+                        Content="Выбор НМЦК"
+                        Checked="RadioButtonsChecked"/>
                 </StackPanel>
             </ScrollViewer>
         </md:ColorZone>
@@ -81,6 +89,32 @@
             <local:Stage_1_1V
                 DataContext="{Binding Stage_1_1_Context, Mode=OneTime}"
                 Visibility="{Binding ElementName=Stage_1_1_RB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>
+        </Grid>
+        <Grid
+            Grid.Row="3"
+            Margin="50,10"
+            VerticalAlignment="Center" Height="110">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                Margin="0,0,32,0"
+                VerticalAlignment="Top"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                md:HintAssist.Hint="Вывод:"
+                Grid.Column="0"
+                Height="110"
+                Text="{Binding Answer, Mode=TwoWay}"/>
+            <Button  
+                Name="NextButton"
+                Grid.Column="1"
+                Width="100"
+                Content="Далее" 
+                Click="NextButton_Click"/>
         </Grid>
     </Grid>
 </Window>

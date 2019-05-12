@@ -1,5 +1,8 @@
 ﻿using Kursah.Model;
 
+using BaseMVVM.Command;
+using BaseMVVM.Abstraction;
+
 namespace Kursah.ViewModel
 {
     public class MainViewVM
@@ -12,5 +15,6 @@ namespace Kursah.ViewModel
         }
 
         public Stage_1_1VM Stage_1_1_Context { get; set; }
+        public string Answer { get; set; }
     }
 }

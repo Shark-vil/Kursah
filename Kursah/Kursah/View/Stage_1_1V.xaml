@@ -12,8 +12,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition />
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
         <StackPanel
             VerticalAlignment="Center"
@@ -57,28 +55,6 @@
                     Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid
-            Grid.Row="3"
-            Margin="50,10"
-            VerticalAlignment="Center" Height="110">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
-            <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
-                Margin="0,0,32,0"
-                VerticalAlignment="Top"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                md:HintAssist.Hint="Вывод:"
-                Grid.Column="0"
-                Height="110"/>
-            <Button
-                Grid.Column="1"
-                Width="100"
-                Content="Далее"/>
-        </Grid>
+        
     </Grid>
 </UserControl>

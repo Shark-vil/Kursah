@@ -17,10 +17,10 @@ namespace Kursah.ViewModel
         public static List<Stage_1_1M> Stage_1_1_Data { get; private set; }
 
         public string MinPrice { get; set; }
-        public string MaxPrice { get; set; }
+        public string MaxPrice { get; set; }        
 
         public Stage_1_1VM()
-        {
+        {            
             Stage_1_1_Data = new List<Stage_1_1M>();
             Stage_1_1_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_1M>(
                 "SELECT `Providers`.`name` AS `Provider_name`,`Goods`.`name` AS `Good_name`,`Provide_offers_goods`.`price` AS `GoodPrice` FROM Providers " +
@@ -70,5 +70,8 @@ namespace Kursah.ViewModel
                 dataGrid.SelectedItems.Add(item);
             }
         }
+
+        
+        
     }
 }
