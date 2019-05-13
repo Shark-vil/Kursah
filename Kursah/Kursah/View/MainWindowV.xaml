@@ -108,7 +108,7 @@
                 md:HintAssist.Hint="Вывод:"
                 Grid.Column="0"
                 Height="110"
-                Text="{Binding Answer, Mode=TwoWay}"/>
+                Name="AnswerTextBox"/>
             <Button  
                 Name="NextButton"
                 Grid.Column="1"

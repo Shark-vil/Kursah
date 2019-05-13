@@ -1,6 +1,7 @@
 ﻿using NLog;
-using System.Windows;
+using Kursah.Model;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace Kursah.View
 {
@@ -32,7 +33,7 @@ namespace Kursah.View
                         IntroductionRB.IsChecked = true;
                         break;
                     case 2:
-                        Stage_1_1_RB.IsChecked = true;
+                        Stage_1_1_RB.IsChecked = true;                        
                         break;
                     case 3:
                         Stage_1_2_RB.IsChecked = true;
@@ -68,24 +69,42 @@ namespace Kursah.View
             switch (rb.Name)
             {
                 case "IntroductionRB":
+                    AnswerTextBox.Clear();
                     radioButtonNum = 1;
                     break;
                 case "Stage_1_1_RB":
+                    Answers.Stage_1_1A = AnswerTextBox.Text;
+                    AnswerTextBox.Clear();
+                    AnswerTextBox.Text = Answers.Stage_1_2A;
                     radioButtonNum = 2;
                     break;
                 case "Stage_1_2_RB":
+                    Answers.Stage_1_2A = AnswerTextBox.Text;
+                    AnswerTextBox.Clear();
+                    AnswerTextBox.Text = Answers.Stage_2A;
                     radioButtonNum = 3;
                     break;
                 case "Stage_2_RB":
+                    Answers.Stage_2A = AnswerTextBox.Text;
+                    AnswerTextBox.Clear();
+                    AnswerTextBox.Text = Answers.Stage_3A;
                     radioButtonNum = 4;
                     break;
                 case "Stage_3_RB":
+                    Answers.Stage_3A = AnswerTextBox.Text;
+                    AnswerTextBox.Clear();
+                    AnswerTextBox.Text = Answers.Stage_4A;
                     radioButtonNum = 5;
                     break;
                 case "Stage_4_RB":
+                    Answers.Stage_4A = AnswerTextBox.Text;
+                    AnswerTextBox.Clear();
+                    AnswerTextBox.Text = Answers.FinalizeA;
                     radioButtonNum = 6;
                     break;
                 case "FinalizeRB":
+                    Answers.FinalizeA = AnswerTextBox.Text;
+                    AnswerTextBox.Clear();
                     radioButtonNum = 7;
                     break;
                 default:
