@@ -86,9 +86,12 @@
         </md:ColorZone>
         <Grid
             Grid.Row="1">
+            <local:IntroductionV
+                DataContext="{Binding IntroductionContext, Mode=OneTime}"
+                Visibility="{Binding ElementName=IntroductionRB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>
             <local:Stage_1_1V
                 DataContext="{Binding Stage_1_1_Context, Mode=OneTime}"
-                Visibility="{Binding ElementName=Stage_1_1_RB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>
+                Visibility="{Binding ElementName=Stage_1_1_RB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>            
         </Grid>
         <Grid
             Grid.Row="3"

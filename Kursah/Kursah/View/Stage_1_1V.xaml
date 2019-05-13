@@ -5,13 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:local="clr-namespace:Kursah.View"
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition />
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <StackPanel
             VerticalAlignment="Center"
@@ -34,13 +34,19 @@
                 Margin="20 0"/>
         </StackPanel>
         <DataGrid
+            Name="Stage_1_1DataGrid"
             Grid.Row="1"
             ItemsSource="{Binding Stage_1_1_Data, Mode=OneWay}"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
             SelectionChanged="DataGrid_SelectionChanged">
-            <DataGrid.Columns>                
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn
+                    Binding="{Binding IsSelected, Mode=TwoWay}"
+                    ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+                </DataGridCheckBoxColumn>
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding Provider_name}"
                     Header="Поставщик"
@@ -55,6 +61,23 @@
                     Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+        <StackPanel
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="НМЦК суммарное: "
+                Margin="20 0"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="{Binding Total, Mode=OneWay}"
+                Margin="20 0"/>
+            <Button
+                Command="{Binding MathTotal, Mode=OneTime}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="120"
+                Content="Расcчитать"/>
+        </StackPanel>
     </Grid>
 </UserControl>

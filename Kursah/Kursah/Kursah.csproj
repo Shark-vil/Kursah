@@ -103,6 +103,7 @@
     <Compile Include="Model\Goods.cs">
       <DependentUpon>kursah.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GoodsCounts.cs" />
     <Compile Include="Model\kursah.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,6 +135,7 @@
       <DependentUpon>kursah.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Stage_1_1M.cs" />
+    <Compile Include="ViewModel\InitializeVM.cs" />
     <Compile Include="ViewModel\Stage_1_1VM.cs" />
     <Compile Include="View\AnswerV.xaml.cs">
       <DependentUpon>AnswerV.xaml</DependentUpon>

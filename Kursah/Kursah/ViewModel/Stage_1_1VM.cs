@@ -12,15 +12,37 @@ using System;
 
 namespace Kursah.ViewModel
 {
-    public  class Stage_1_1VM : ViewModelBase
+    public class Stage_1_1VM : ViewModelBase
     {
         public static List<Stage_1_1M> Stage_1_1_Data { get; private set; }
 
         public string MinPrice { get; set; }
-        public string MaxPrice { get; set; }        
+        public string MaxPrice { get; set; }
+
+        public SimpleCommand MathTotal { get;}
+
+        public string Total { get; set; }
 
         public Stage_1_1VM()
-        {            
+        {
+            MathTotal = new SimpleCommand(() =>
+            {
+                float goodTotal = 0;
+                foreach (GoodsCounts match in InitializeVM.Counts)
+                {
+                    float goodSum = 0;
+                    foreach (Stage_1_1M row in Stage_1_1_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name))
+                    {
+                        goodSum += int.Parse(row.GoodPrice);
+                    }
+                    if (match.Count > 0)
+                        goodTotal += goodSum / match.Count;
+                }
+                Total = goodTotal.ToString();
+                Total = "commant test";
+
+            });
+
             Stage_1_1_Data = new List<Stage_1_1M>();
             Stage_1_1_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_1M>(
                 "SELECT `Providers`.`name` AS `Provider_name`,`Goods`.`name` AS `Good_name`,`Provide_offers_goods`.`price` AS `GoodPrice` FROM Providers " +
@@ -40,38 +62,37 @@ namespace Kursah.ViewModel
                 foreach (Stage_1_1M item in Stage_1_1_Data)
                 {
                     if (item.Good_name == name)
-                    tmpMin = tmpMin == 0 ? 
-                        int.Parse(item.GoodPrice) : int.Parse(item.GoodPrice) > tmpMin ? 
-                        tmpMin : int.Parse(item.GoodPrice);
+                        tmpMin = tmpMin == 0 ?
+                            int.Parse(item.GoodPrice) : int.Parse(item.GoodPrice) > tmpMin ?
+                            tmpMin : int.Parse(item.GoodPrice);
                 }
                 double tmpMax = tmpMin * 1.25;
                 MinPrice += string.Concat(tmpMin.ToString(), "; ");
                 MaxPrice += string.Concat(tmpMax.ToString(), "; ");
             }
-            MinPrice.Remove(MinPrice.Length-2, 2);
-            MaxPrice.Remove(MinPrice.Length-2, 2);
+            MinPrice.Remove(MinPrice.Length - 2, 2);
+            MaxPrice.Remove(MinPrice.Length - 2, 2);
         }
 
-        public static void SelectSecond(DataGrid dataGrid)
+        public static void SelectSecond(string providerName)
         {
-            List<Stage_1_1M> second = new List<Stage_1_1M>();
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            List<Stage_1_1M> tmpList = Stage_1_1_Data.FindAll(item => item.Provider_name == providerName);
+            foreach (Stage_1_1M item in tmpList)
             {
-                Stage_1_1M row = (Stage_1_1M)dataGrid.SelectedItems[i];
-                foreach (Stage_1_1M item in Stage_1_1_Data.FindAll(item => item.Provider_name == row.Provider_name))
-                {
-                    if (!second.Contains(item))
-                        second.Add(item);
-                }
+                item.Select(true);
             }
-            dataGrid.SelectedItems.Clear();
-            foreach (Stage_1_1M item in second)
+        }
+        public static void DeselectSecond(string providerName)
+        {
+            List<Stage_1_1M> tmpList = Stage_1_1_Data.FindAll(item => item.Provider_name == providerName);
+            foreach (Stage_1_1M item in tmpList)
             {
-                dataGrid.SelectedItems.Add(item);
+                item.Select(false);
             }
         }
 
         
         
+
     }
 }
