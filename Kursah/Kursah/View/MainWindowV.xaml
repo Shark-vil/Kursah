@@ -93,7 +93,8 @@
         <Grid
             Grid.Row="3"
             Margin="50,10"
-            VerticalAlignment="Center" Height="110">
+            VerticalAlignment="Center" Height="110"
+            Visibility="{Binding ElementName=IntroductionRB, Path=IsChecked, Converter={StaticResource BoolVisibleInverted}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="100"/>

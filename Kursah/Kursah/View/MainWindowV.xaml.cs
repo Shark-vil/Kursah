@@ -68,8 +68,7 @@ namespace Kursah.View
 
             switch (rb.Name)
             {
-                case "IntroductionRB":
-                    AnswerTextBox.Clear();
+                case "IntroductionRB":                    
                     radioButtonNum = 1;
                     break;
                 case "Stage_1_1_RB":

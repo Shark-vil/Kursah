@@ -16,6 +16,8 @@
             
             <conv:BoolToVisibleConverter
                 x:Key="BoolVisible"/>
+            <conv:BoolToVisibleInvertedConverter
+                x:Key="BoolVisibleInverted"/>
         </ResourceDictionary>
         
     </Application.Resources>

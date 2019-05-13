@@ -18,6 +18,7 @@ namespace Kursah
             {
                 DataContext = new MainViewVM()
             };
+            //Application.Current.MainWindow = mainWindow;
             mainWindow.Closing += (o, arg) => kursahEntities.Close();
             mainWindow.Show();
         }
