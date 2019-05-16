@@ -74,7 +74,7 @@ namespace Kursah.View
                 case "Stage_1_1_RB":
                     Answers.Stage_1_1A = AnswerTextBox.Text;
                     AnswerTextBox.Clear();
-                    AnswerTextBox.Text = Answers.Stage_1_2A;
+                    AnswerTextBox.Text = Answers.Stage_1_2A;                    
                     radioButtonNum = 2;
                     break;
                 case "Stage_1_2_RB":
