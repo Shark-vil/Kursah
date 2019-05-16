@@ -7,7 +7,6 @@ using Kursah.Model;
 using BaseMVVM.Command;
 using BaseMVVM.Abstraction;
 using System.Collections.Generic;
-using System.Windows.Controls;
 using System;
 
 namespace Kursah.ViewModel
@@ -23,7 +22,17 @@ namespace Kursah.ViewModel
 
         public SimpleCommand MathTotal { get; set; }
 
-        public string Total { get; set; }
+        private string total;
+        public string Total
+        {
+            get => total;
+            set
+            {
+                total = value;
+
+                OnPropertyChanged();
+            }
+        }
 
         public string Error { get; set; }
 
@@ -52,9 +61,9 @@ namespace Kursah.ViewModel
                                               
                     }
                     if (match.Count > 0)
-                        goodTotal += goodSum / match.Count;
+                        goodTotal += (goodSum / Stage_1_1_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name).Count) * match.Count;
                 }
-                if (Error != "")
+                if (Error == "")
                 {
                     Total = goodTotal.ToString();
                     SmallestTotal.Stage_1_1Min = Convert.ToDouble(Total);

@@ -1,8 +1,9 @@
-﻿using Kursah.ViewModel;
+﻿using BaseMVVM.Abstraction;
+using Kursah.ViewModel;
 
 namespace Kursah.Model
 {
-    public class Stage_1_1M
+    public class Stage_1_1M : ViewModelBase
     {
         private bool _isSelected;
 
@@ -24,6 +25,8 @@ namespace Kursah.Model
                 {
                     Stage_1_1VM.DeselectSecond(Provider_name);
                 }
+
+                OnPropertyChanged();
             }
         }
 

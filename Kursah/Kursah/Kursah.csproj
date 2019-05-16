@@ -104,6 +104,7 @@
       <DependentUpon>kursah.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GoodsCounts.cs" />
+    <Compile Include="Model\GoodsMaxPrice.cs" />
     <Compile Include="Model\kursah.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,6 +135,7 @@
     <Compile Include="Model\Provide_offers_goods.cs">
       <DependentUpon>kursah.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SmallestTotal.cs" />
     <Compile Include="Model\Stage_1_1M.cs" />
     <Compile Include="ViewModel\InitializeVM.cs" />
     <Compile Include="ViewModel\Stage_1_1VM.cs" />
