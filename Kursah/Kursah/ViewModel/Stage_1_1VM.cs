@@ -78,10 +78,7 @@ namespace Kursah.ViewModel
                 }
             });
 
-            Stage_1_1_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_1M>(
-                "SELECT `Providers`.`name` AS `Provider_name`,`Goods`.`name` AS `Good_name`,`Provide_offers_goods`.`price` AS `GoodPrice` FROM Providers " +
-                "LEFT JOIN `kursah`.`Provide_offers_goods` ON `Providers`.`id` = `Provide_offers_goods`.`provider_id`  " +
-                "LEFT JOIN `kursah`.`Goods` ON `Provide_offers_goods`.`good_id` = `Goods`.`id` ").ToListAsync().Result;
+            Stage_1_1_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_1M>(Queries.Stage_1_1Querry).ToListAsync().Result;
 
             //Расчет минимальной и максимальной цен
             foreach (GoodsCounts match in InitializeVM.Counts)

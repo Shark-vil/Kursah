@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kursah.Common
+﻿namespace Kursah.Common
 {
     public static class Errors
     {

@@ -86,14 +86,7 @@ namespace Kursah.ViewModel
                     Error = Errors.NoSelected;
             });
 
-            Stage_1_2_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_2M>(
-                "SELECT  `Providers`.`name` AS `Provider_name`,  `Goods`.`name` AS `Good_name` ,  `Provide_offers_goods`.`price` AS `GoodPrice`,  " +
-                "`Payment_types`.`name` AS `PaymentType`,  `Provide_offers_goods`.`payment_delay` AS `PaymentDelay`, " +
-                "`Provide_offers_goods`.`delivery_tide` AS `DeliveryTide`, `Providers`.`bad` AS `Bad`" +
-                "FROM Providers " +
-                "LEFT JOIN  `kursah`.`Provide_offers_goods` ON  `Providers`.`id` =  `Provide_offers_goods`.`provider_id` " +
-                "LEFT JOIN  `kursah`.`Goods` ON  `Provide_offers_goods`.`good_id` =  `Goods`.`id` " +
-                "LEFT JOIN  `kursah`.`Payment_types` ON  `Provide_offers_goods`.`payment_type_id` =  `Payment_types`.`id`").ToListAsync().Result;
+            Stage_1_2_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_2M>(Queries.Stage_1_2Querry).ToListAsync().Result;
 
             foreach (GoodsCounts match in InitializeVM.Counts)
             {
