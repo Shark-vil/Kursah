@@ -11,12 +11,17 @@ namespace Kursah.ViewModel
         {
             kursahEntities.Start();
 
-            Stage_1_1_Context = new Stage_1_1VM();
             IntroductionContext = new InitializeVM();
+
+            Stage_1_1_Context = new Stage_1_1VM();
+            Stage_1_2_Context = new Stage_1_2VM();
+            
         }
 
-        public Stage_1_1VM Stage_1_1_Context { get; set; }
         public InitializeVM IntroductionContext { get; set; }
+        public Stage_1_1VM Stage_1_1_Context { get; set; }
+        public Stage_1_2VM Stage_1_2_Context { get; set; }
+
         public string Answer { get; set; }
     }
 }

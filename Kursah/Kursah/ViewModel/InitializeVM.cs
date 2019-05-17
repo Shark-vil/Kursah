@@ -1,12 +1,29 @@
 ﻿using System.Collections.Generic;
 
+using BaseMVVM.Abstraction;
+using BaseMVVM.Command;
+
 using Kursah.Model;
 
 namespace Kursah.ViewModel
 {
-    public class InitializeVM
+    public class InitializeVM : ViewModelBase
     {
+        private int _maxDeliveryTideLocal;
+
         public static List<GoodsCounts> Counts { get; set; }
+        public static int MaxDeliveryTide { get; set; }
+
+        public int MaxDeliveryTideLocal
+        {
+            get => _maxDeliveryTideLocal;
+            set
+            {
+                _maxDeliveryTideLocal = value;
+
+                OnPropertyChanged();
+            }
+        }
 
         static InitializeVM()
         {

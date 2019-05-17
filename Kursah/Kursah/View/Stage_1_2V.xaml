@@ -1,12 +1,101 @@
-﻿<UserControl x:Class="Kursah.View.Stage_1_2V"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Kursah.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl 
+    x:Class="Kursah.View.Stage_1_2V"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    mc:Ignorable="d" 
+    d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="Минимальная цена: "
+                Margin="20 0"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="{Binding MinPrice, Mode=OneWay}"
+                Margin="20 0"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="Максимальная цена: "
+                Margin="20 0"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="{Binding MaxPrice, Mode=OneWay}"
+                Margin="20 0"/>
+        </StackPanel>
+        <DataGrid
+            Name="Stage_1_2DataGrid"
+            Grid.Row="1"
+            ItemsSource="{Binding Stage_1_2_Data, Mode=OneWay}"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserSortColumns="True"
+            SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn
+                    md:DataGridAssist.EnableEditBoxAssist="True"
+                    Binding="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+                </DataGridCheckBoxColumn>
+                <md:MaterialDataGridTextColumn
+                    Binding="{Binding Provider_name}"
+                    Header="Поставщик"
+                    Width="200"/>
+                <md:MaterialDataGridTextColumn
+                    Binding="{Binding Good_name}"
+                    Header="Товар"
+                    Width="200"/>
+                <md:MaterialDataGridTextColumn
+                    Binding="{Binding GoodPrice}"
+                    Header="Цена"
+                    Width="200"/>
+                <md:MaterialDataGridTextColumn
+                    Binding="{Binding PaymentType}"
+                    Header="Тип оплаты"
+                    Width="200"/>
+                <md:MaterialDataGridTextColumn
+                    Binding="{Binding PaymentDelay}"
+                    Header="Задержка оплаты, дни"
+                    Width="200"/>
+                <md:MaterialDataGridTextColumn
+                    Binding="{Binding DeliveryTide}"
+                    Header="Срок доставки, дни"
+                    Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="НМЦК суммарное: "
+                Margin="20 0"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="{Binding Total, Mode=OneWay}"
+                Margin="20 0"/>
+            <Button
+                Command="{Binding MathTotal}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="120"
+                Content="Расcчитать"/>
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="{Binding Error}"
+                Margin="20 0"/>
+        </StackPanel>       
     </Grid>
 </UserControl>

@@ -1,17 +1,21 @@
-﻿    using BaseMVVM.Abstraction;
+﻿using BaseMVVM.Abstraction;
 
-    using Kursah.ViewModel;
-
+using Kursah.ViewModel;
 
 namespace Kursah.Model
 {
-    public class Stage_1_1M : ViewModelBase
+    public class Stage_1_2M : ViewModelBase
     {
         private bool _isSelected;
 
         public string Provider_name { get; set; }
         public string Good_name { get; set; }
         public string GoodPrice { get; set; }
+        public string PaymentType { get; set; }
+        public int PaymentDelay { get; set; }
+        public int DeliveryTide { get; set; }
+        public bool Bad { get; set; }
+
 
         public bool IsSelected
         {
@@ -21,11 +25,11 @@ namespace Kursah.Model
                 _isSelected = value;
                 if (_isSelected)
                 {
-                   Stage_1_1VM.SelectSecond(Provider_name);
+                    Stage_1_1VM.SelectSecond(Provider_name);
                 }
                 else
                 {
-                   Stage_1_1VM.DeselectSecond(Provider_name);
+                    Stage_1_1VM.DeselectSecond(Provider_name);
                 }
 
                 OnPropertyChanged();
@@ -35,11 +39,6 @@ namespace Kursah.Model
         public void Select(bool value)
         {
             _isSelected = value;
-        }
-
-        public override string ToString()
-        {
-            return string.Concat(Provider_name, " ", Good_name, " ", GoodPrice);
         }
     }
 }
