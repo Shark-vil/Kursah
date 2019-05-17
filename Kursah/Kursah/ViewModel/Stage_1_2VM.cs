@@ -46,7 +46,6 @@ namespace Kursah.ViewModel
 
         public Stage_1_2VM()
         {
-            Error = "";
             MinPrice = "";
             MaxPrice = "";
 
@@ -55,38 +54,43 @@ namespace Kursah.ViewModel
 
             MathTotal = new SimpleCommand(() =>
             {
-                float goodTotal = 0;
-                foreach (GoodsCounts match in InitializeVM.Counts)
+                if (Stage_1_2_Data.FindAll(item => item.IsSelected).Count > 0)
                 {
-                    float goodSum = 0;
-                    foreach (Stage_1_2M row in Stage_1_2_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name))
+                    float goodTotal = 0;
+                    foreach (GoodsCounts match in InitializeVM.Counts)
                     {
-                        if ((int.Parse(row.GoodPrice) > MaxPrices.Find(item => item.Good.name == row.Good_name).Price))
-                            Error = "Стоимость одного из выбранных товаров превышает максимальную расчетную стоимость";
-                        else if (row.Bad)
-                            Error = "Один из поставщиков находится в списке ненадежных поставщиков";
-                        else if (row.Bad)
-                            Error = "Один из поставщиков находится в списке ненадежных поставщиков";
-                        else
-                            Error = "";
-                        goodSum += int.Parse(row.GoodPrice);
+                        float goodSum = 0;
+                        foreach (Stage_1_2M row in Stage_1_2_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name))
+                        {
+                            if ((int.Parse(row.GoodPrice) > MaxPrices.Find(item => item.Good.name == row.Good_name).Price))
+                                Error = Errors.HighPrice;
+                            else if (row.Bad)
+                                Error = Errors.BadReputation;
+                            else if (row.DeliveryTide > InitializeVM.MaxDeliveryTide)
+                                Error = Errors.LongDelivery;
+                            else
+                                Error = Errors.Normal;
+                            goodSum += int.Parse(row.GoodPrice);
 
+                        }
+                        if (match.Count > 0)
+                            goodTotal += (goodSum / Stage_1_2_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name).Count) * match.Count;
                     }
-                    if (match.Count > 0)
-                        goodTotal += (goodSum / Stage_1_2_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name).Count) * match.Count;
+                    if (Error == Errors.Normal)
+                    {
+                        Total = goodTotal.ToString();
+                        SmallestTotal.Stage_1_2Min = Convert.ToDouble(Total);
+                    }
                 }
-                if (Error == "")
-                {
-                    Total = goodTotal.ToString();
-                    SmallestTotal.Stage_1_2Min = Convert.ToDouble(Total);
-                }
+                else
+                    Error = Errors.NoSelected;
             });
 
             Stage_1_2_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_2M>(
                 "SELECT  `Providers`.`name` AS `Provider_name`,  `Goods`.`name` AS `Good_name` ,  `Provide_offers_goods`.`price` AS `GoodPrice`,  " +
                 "`Payment_types`.`name` AS `PaymentType`,  `Provide_offers_goods`.`payment_delay` AS `PaymentDelay`, " +
                 "`Provide_offers_goods`.`delivery_tide` AS `DeliveryTide`, `Providers`.`bad` AS `Bad`" +
-                "FROM Providers" +
+                "FROM Providers " +
                 "LEFT JOIN  `kursah`.`Provide_offers_goods` ON  `Providers`.`id` =  `Provide_offers_goods`.`provider_id` " +
                 "LEFT JOIN  `kursah`.`Goods` ON  `Provide_offers_goods`.`good_id` =  `Goods`.`id` " +
                 "LEFT JOIN  `kursah`.`Payment_types` ON  `Provide_offers_goods`.`payment_type_id` =  `Payment_types`.`id`").ToListAsync().Result;

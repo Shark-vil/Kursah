@@ -20,6 +20,7 @@ namespace Kursah.ViewModel
             set
             {
                 _maxDeliveryTideLocal = value;
+                MaxDeliveryTide = value;
 
                 OnPropertyChanged();
             }

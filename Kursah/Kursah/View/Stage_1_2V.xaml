@@ -40,8 +40,7 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
-            CanUserSortColumns="True"
-            SelectionChanged="DataGrid_SelectionChanged">
+            CanUserSortColumns="True">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn
                     md:DataGridAssist.EnableEditBoxAssist="True"
