@@ -43,9 +43,11 @@
             SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn
-                    Binding="{Binding IsSelected, Mode=TwoWay}"
+                    md:DataGridAssist.EnableEditBoxAssist="True"
+                    Binding="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                    >
                 </DataGridCheckBoxColumn>
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding Provider_name}"

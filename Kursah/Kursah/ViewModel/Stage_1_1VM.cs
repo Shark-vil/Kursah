@@ -23,6 +23,8 @@ namespace Kursah.ViewModel
         public SimpleCommand MathTotal { get; set; }
 
         private string total;
+        private string _error;
+
         public string Total
         {
             get => total;
@@ -34,7 +36,16 @@ namespace Kursah.ViewModel
             }
         }
 
-        public string Error { get; set; }
+        public string Error
+        {
+            get => _error;
+            set
+            {
+                _error = value;
+
+                OnPropertyChanged();
+            }
+        }
 
         public Stage_1_1VM()
         {
@@ -58,7 +69,7 @@ namespace Kursah.ViewModel
                         else
                             Error = "";
                         goodSum += int.Parse(row.GoodPrice);
-                                              
+
                     }
                     if (match.Count > 0)
                         goodTotal += (goodSum / Stage_1_1_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name).Count) * match.Count;
@@ -68,22 +79,23 @@ namespace Kursah.ViewModel
                     Total = goodTotal.ToString();
                     SmallestTotal.Stage_1_1Min = Convert.ToDouble(Total);
                 }
-            });            
+            });
 
             Stage_1_1_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_1M>(
                 "SELECT `Providers`.`name` AS `Provider_name`,`Goods`.`name` AS `Good_name`,`Provide_offers_goods`.`price` AS `GoodPrice` FROM Providers " +
                 "LEFT JOIN `kursah`.`Provide_offers_goods` ON `Providers`.`id` = `Provide_offers_goods`.`provider_id`  " +
-                "LEFT JOIN `kursah`.`Goods` ON `Provide_offers_goods`.`good_id` = `Goods`.`id` ").ToListAsync().Result;            
+                "LEFT JOIN `kursah`.`Goods` ON `Provide_offers_goods`.`good_id` = `Goods`.`id` ").ToListAsync().Result;
 
             //Расчет минимальной и максимальной цен
             foreach (GoodsCounts match in InitializeVM.Counts)
             {
                 double tmpMin = 0;
+
                 foreach (Stage_1_1M item in Stage_1_1_Data)
                 {
                     if (item.Good_name == match.Good.name)
-                        tmpMin = tmpMin == 0 ? int.Parse(item.GoodPrice) : 
-                            int.Parse(item.GoodPrice) > tmpMin ? tmpMin : 
+                        tmpMin = tmpMin == 0 ? int.Parse(item.GoodPrice) :
+                            int.Parse(item.GoodPrice) > tmpMin ? tmpMin :
                             int.Parse(item.GoodPrice);
                 }
                 double tmpMax = tmpMin * 1.25;
@@ -98,7 +110,8 @@ namespace Kursah.ViewModel
             List<Stage_1_1M> tmpList = Stage_1_1_Data.FindAll(item => item.Provider_name == providerName);
             foreach (Stage_1_1M item in tmpList)
             {
-                item.Select(true);
+                if (!item.IsSelected)
+                    item.Select(true);
             }
         }
         public static void DeselectSecond(string providerName)
@@ -106,12 +119,13 @@ namespace Kursah.ViewModel
             List<Stage_1_1M> tmpList = Stage_1_1_Data.FindAll(item => item.Provider_name == providerName);
             foreach (Stage_1_1M item in tmpList)
             {
-                item.Select(false);
+                if (item.IsSelected)
+                    item.Select(false);
             }
         }
 
-        
-        
+
+
 
     }
 }
