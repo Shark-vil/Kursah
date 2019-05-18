@@ -67,10 +67,14 @@
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding PaymentDelay}"
                     Header="Задержка оплаты, дни"
-                    Width="200"/>
+                    Width="100"/>
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding DeliveryTide}"
                     Header="Срок доставки, дни"
+                    Width="100"/>
+                <md:MaterialDataGridTextColumn
+                    Binding="{Binding Bad}"
+                    Header="Недобросовестный"
                     Width="200"/>
             </DataGrid.Columns>
         </DataGrid>

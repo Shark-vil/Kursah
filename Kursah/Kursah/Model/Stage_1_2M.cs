@@ -25,11 +25,11 @@ namespace Kursah.Model
                 _isSelected = value;
                 if (_isSelected)
                 {
-                    Stage_1_1VM.SelectSecond(Provider_name);
+                    Stage_1_2VM.SelectSecond(Provider_name);
                 }
                 else
                 {
-                    Stage_1_1VM.DeselectSecond(Provider_name);
+                    Stage_1_2VM.DeselectSecond(Provider_name);
                 }
 
                 OnPropertyChanged();

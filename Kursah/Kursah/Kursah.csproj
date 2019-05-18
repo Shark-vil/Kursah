@@ -99,6 +99,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\BoolToVisibleInvertedConverter.cs" />
+    <Compile Include="Common\Errors.cs" />
+    <Compile Include="Common\Queries.cs" />
     <Compile Include="Model\Answers.cs" />
     <Compile Include="Model\Goods.cs">
       <DependentUpon>kursah.tt</DependentUpon>

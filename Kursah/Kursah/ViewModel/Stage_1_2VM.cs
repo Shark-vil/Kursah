@@ -88,6 +88,7 @@ namespace Kursah.ViewModel
 
             Stage_1_2_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_2M>(Queries.Stage_1_2Querry).ToListAsync().Result;
 
+            //Расчет минимальной и максимальной цен
             foreach (GoodsCounts match in InitializeVM.Counts)
             {
                 double tmpMin = 0;
