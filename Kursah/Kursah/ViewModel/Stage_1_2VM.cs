@@ -1,5 +1,6 @@
 ﻿using Kursah.Common;
 using Kursah.Model;
+
 using BaseMVVM.Command;
 using BaseMVVM.Abstraction;
 
@@ -19,15 +20,15 @@ namespace Kursah.ViewModel
 
         public SimpleCommand MathTotal { get; set; }
 
-        private string total;
+        private string _total;
         private string _error;
 
         public string Total
         {
-            get => total;
+            get => _total;
             set
             {
-                total = value;
+                _total = value;
 
                 OnPropertyChanged();
             }

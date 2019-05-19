@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="32"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <DataGrid
@@ -35,16 +35,33 @@
         <StackPanel
             Grid.Row="1"
             VerticalAlignment="Center"
+            Orientation="Vertical">
+            <StackPanel            
+            VerticalAlignment="Center"
             Orientation="Horizontal">
-            <TextBlock
+                <TextBlock
                 Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                 Text="Максимальный срок доставки: "
                 Margin="20 0"/>
-            <TextBox
+                <TextBox
                 Text="{Binding MaxDeliveryTideLocal, Mode=TwoWay}"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                 md:HintAssist.Hint="Кол-во дней"
                 Width="200"/>
+            </StackPanel>
+            <StackPanel
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+                <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="КИФ: "
+                Margin="20 0"/>
+                <TextBox
+                Text="{Binding KIFLocal, Mode=TwoWay}"
+                md:HintAssist.Hint="КИФ"
+                Width="200"/>
+            </StackPanel>
         </StackPanel>
+        
+
     </Grid>
 </UserControl>

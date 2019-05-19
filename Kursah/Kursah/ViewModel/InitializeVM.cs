@@ -10,9 +10,11 @@ namespace Kursah.ViewModel
     public class InitializeVM : ViewModelBase
     {
         private int _maxDeliveryTideLocal;
+        private int _KIFLocal;
 
         public static List<GoodsCounts> Counts { get; set; }
         public static int MaxDeliveryTide { get; set; }
+        public static int KIF { get; set; }
 
         public int MaxDeliveryTideLocal
         {
@@ -21,6 +23,17 @@ namespace Kursah.ViewModel
             {
                 _maxDeliveryTideLocal = value;
                 MaxDeliveryTide = value;
+
+                OnPropertyChanged();
+            }
+        }
+        public int KIFLocal
+        {
+            get => _KIFLocal;
+            set
+            {
+                _KIFLocal = value;
+                KIF = value;
 
                 OnPropertyChanged();
             }
