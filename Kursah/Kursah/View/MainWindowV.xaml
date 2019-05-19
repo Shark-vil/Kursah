@@ -95,6 +95,9 @@
             <local:Stage_1_2V
                 DataContext="{Binding Stage_1_2_Context, Mode=OneTime}"
                 Visibility="{Binding ElementName=Stage_1_2_RB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>
+            <local:Stage_2V
+                DataContext="{Binding Stage_2_Context, Mode=OneTime}"
+                Visibility="{Binding ElementName=Stage_2_RB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>
         </Grid>
         <Grid
             Grid.Row="3"

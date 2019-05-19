@@ -12,7 +12,7 @@ namespace Kursah.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class kursahEntities : DbContext
     {
         public static kursahEntities Instane;
@@ -47,7 +47,7 @@ namespace Kursah.Model
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Goods> Goods { get; set; }
         public virtual DbSet<Offers> Offers { get; set; }
         public virtual DbSet<Offers_goods> Offers_goods { get; set; }

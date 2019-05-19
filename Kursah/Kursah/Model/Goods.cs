@@ -21,7 +21,5 @@ namespace Kursah.Model
         {
             return name;
         }
-
-        public ICollection<Provide_offers_goods> provide_Offers_Goods { get; set; }
     }
 }

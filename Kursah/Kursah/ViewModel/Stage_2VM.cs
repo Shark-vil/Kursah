@@ -39,5 +39,10 @@ namespace Kursah.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        public Stage_2VM()
+        {
+            Stage_2_Data = kursahEntities.Instane.Database.SqlQuery<Stage_2M>(Queries.Stage_2Querry).ToListAsync().Result;
+        }
     }
 }

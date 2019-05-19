@@ -19,6 +19,5 @@ namespace Kursah.Model
         public int offer_id { get; set; }
         public int count { get; set; }
         public float price { get; set; }
-        public Nullable<float> nmck { get; set; }
     }
 }

@@ -140,9 +140,11 @@
     <Compile Include="Model\SmallestTotal.cs" />
     <Compile Include="Model\Stage_1_1M.cs" />
     <Compile Include="Model\Stage_1_2M.cs" />
+    <Compile Include="Model\Stage_2M.cs" />
     <Compile Include="ViewModel\InitializeVM.cs" />
     <Compile Include="ViewModel\Stage_1_1VM.cs" />
     <Compile Include="ViewModel\Stage_1_2VM.cs" />
+    <Compile Include="ViewModel\Stage_2VM.cs" />
     <Compile Include="View\AnswerV.xaml.cs">
       <DependentUpon>AnswerV.xaml</DependentUpon>
     </Compile>
@@ -234,8 +236,8 @@
     </EmbeddedResource>
     <Content Include="Model\kursah.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>kursah.Context.cs</LastGenOutput>
       <DependentUpon>kursah.edmx</DependentUpon>
+      <LastGenOutput>kursah.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\kursah.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
