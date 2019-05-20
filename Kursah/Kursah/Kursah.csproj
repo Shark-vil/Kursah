@@ -142,6 +142,7 @@
     <Compile Include="Model\Stage_1_2M.cs" />
     <Compile Include="Model\Stage_2M.cs" />
     <Compile Include="Model\Stage_3M.cs" />
+    <Compile Include="Model\Stage_4M.cs" />
     <Compile Include="ViewModel\FinalizeVM.cs" />
     <Compile Include="ViewModel\InitializeVM.cs" />
     <Compile Include="ViewModel\Stage_1_1VM.cs" />
