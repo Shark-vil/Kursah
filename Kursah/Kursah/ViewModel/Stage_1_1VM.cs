@@ -62,9 +62,9 @@ namespace Kursah.ViewModel
                     foreach (Stage_1_1M row in Stage_1_1_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name))
                     {
                         if ((int.Parse(row.GoodPrice) > MaxPrices.Find(item => item.Good.name == row.Good_name).Price))
-                            Error = "Стоимость одного из выбранных товаров превышает максимальную расчетную стоимость";
+                            Error = Errors.HighPrice;
                         else
-                            Error = "";
+                            Error = Errors.Normal;
                         goodSum += int.Parse(row.GoodPrice);
 
                     }

@@ -1,6 +1,6 @@
 ﻿namespace Kursah.Model
 {
-    public static class Answers
+    public class Answers
     {
         public static string Stage_1_1A { get; set; }
         public static string Stage_1_2A { get; set; }
