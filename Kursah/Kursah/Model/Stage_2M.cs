@@ -8,6 +8,8 @@ namespace Kursah.Model
 {
     public class Stage_2M : ViewModelBase
     {
+        private double _iPC;
+
         public string OfferName { get; set; }
         public DateTime DateComplete { get; set; }
         public string GoodName { get; set; }
@@ -16,6 +18,6 @@ namespace Kursah.Model
         public double PriceOldPerOne { get; set; }
         public double PriceNewPerOne { get; set; }
         public double PriceNew { get; set; }
-        public double IPC { get; set; }
+        public double IPC { get => 1; set => _iPC = value; }
     }
 }

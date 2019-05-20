@@ -19,7 +19,8 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
-            CanUserSortColumns="True">
+            CanUserSortColumns="True"
+            IsReadOnly="True">
             <DataGrid.Columns>
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding OfferName}"

@@ -42,7 +42,35 @@ namespace Kursah.ViewModel
 
         public Stage_2VM()
         {
+            Error = Errors.Normal;
+            Total = "";
+
             Stage_2_Data = kursahEntities.Instane.Database.SqlQuery<Stage_2M>(Queries.Stage_2Querry).ToListAsync().Result;
+
+            MathTotal = new SimpleCommand(() =>
+            {
+                double goodTotal = 0;
+                if (InitializeVM.KIF <= 0)
+                    Error = Errors.NoKIF;
+                if (Error == Errors.Normal)
+                {
+                    foreach (GoodsCounts match in InitializeVM.Counts)
+                    {
+                        double goodSum = 0;
+                        foreach (Stage_2M row in Stage_2_Data.FindAll(item => item.GoodName == match.Good.name))
+                        {
+                            row.PriceOldPerOne = row.PriceOld / row.Count;
+                            row.PriceNewPerOne = row.PriceOldPerOne * InitializeVM.KIF * row.IPC;
+                            row.PriceNew = row.PriceNewPerOne * match.Count;
+                            goodSum += row.PriceNew;
+                        }
+                        if (match.Count > 0)
+                            goodTotal += (goodSum / Stage_2_Data.FindAll(item => item.GoodName == match.Good.name).Count);
+                    }
+                    Total = goodTotal.ToString();
+                    SmallestTotal.Stage_2Min = Convert.ToDouble(Total);
+                }
+            });
         }
     }
 }
