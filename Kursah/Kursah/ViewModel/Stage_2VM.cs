@@ -67,9 +67,9 @@ namespace Kursah.ViewModel
                             goodTotal += (goodSum / Stage_2_Data.FindAll(item => item.GoodName == match.Good.name).Count);
                     }
 
-                    // Изменение БД в Stage_3VM
-                    for (int i = 0; i < Stage_3VM.Stage_3_Data.Count; i++)
-                        Stage_3VM.Stage_3_Data[i].GoodPrice = Stage_2_Data[i].PriceNew;
+                    //// Изменение БД в Stage_3VM
+                    //for (int i = 0; i < Stage_3VM.Stage_3_Data.Count; i++)
+                    //    Stage_3VM.Stage_3_Data[i].GoodPrice = Stage_2_Data[i].PriceNew;
 
                     Total = goodTotal.ToString();
                     SmallestTotal.Stage_2Min = Convert.ToDouble(Total);
