@@ -11,7 +11,8 @@ namespace Kursah.ViewModel
 {
     public class Stage_3VM : ViewModelBase
     {
-        public static List<Stage_3M> Stage_3_Data { get; private set; }
+        //public static List<Stage_3M> Stage_3_Data { get; private set; }
+        public static List<Stage_3M> Stage_3_Data { get; set; }
         public SimpleCommand MathTotal { get; set; }
 
         private string _total;
@@ -40,11 +41,14 @@ namespace Kursah.ViewModel
 
         public Stage_3VM()
         {
+            Error = Errors.Normal;
+            Total = "";
+
             Stage_3_Data = kursahEntities.Instane.Database.SqlQuery<Stage_3M>(Queries.Stage_3Querry).ToListAsync().Result;
 
             MathTotal = new SimpleCommand(() =>
             {
-                if (Stage_3_Data.Count == 0)
+                if (Stage_3_Data == null || Stage_3_Data.Count == 0)
                 {
                     Total = "";
                     Error = "Нету объектов, которые бы удовлетворяли требованиям вычисления";
@@ -55,9 +59,7 @@ namespace Kursah.ViewModel
                 int count = InitializeVM.Counts.Count;
 
                 foreach (Stage_3M value in Stage_3_Data.FindAll(item => item.IsSelected))
-                {
                     summ += value.GoodPrice;
-                }
 
                 if (summ == 0)
                 {

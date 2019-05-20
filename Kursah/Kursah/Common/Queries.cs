@@ -21,7 +21,7 @@
             "LEFT JOIN `kursah`.`Offers_goods` ON `Offers`.`id` = `Offers_goods`.`offer_id`  " +
             "LEFT JOIN `kursah`.`Goods` ON `Offers_goods`.`goods_id` = `Goods`.`id` ";
         public static string Stage_3Querry { get; } =
-            "SELECT `Goods`.`name` AS `GoodName`, `Offers_goods`.`price` AS `GoodPrice` " +
+            "SELECT `Goods`.`name` AS `GoodName`" +
             "FROM Offers " +
             "LEFT JOIN `kursah`.`Offers_goods` ON `Offers`.`id` = `Offers_goods`.`offer_id`  " +
             "LEFT JOIN `kursah`.`Goods` ON `Offers_goods`.`goods_id` = `Goods`.`id` ";

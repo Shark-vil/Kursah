@@ -7,7 +7,6 @@ using BaseMVVM.Abstraction;
 using System.Collections.Generic;
 using System;
 
-
 namespace Kursah.ViewModel
 {
     public class Stage_2VM : ViewModelBase
@@ -67,6 +66,11 @@ namespace Kursah.ViewModel
                         if (match.Count > 0)
                             goodTotal += (goodSum / Stage_2_Data.FindAll(item => item.GoodName == match.Good.name).Count);
                     }
+
+                    // Изменение БД в Stage_3VM
+                    for (int i = 0; i < Stage_3VM.Stage_3_Data.Count; i++)
+                        Stage_3VM.Stage_3_Data[i].GoodPrice = Stage_2_Data[i].PriceNew;
+
                     Total = goodTotal.ToString();
                     SmallestTotal.Stage_2Min = Convert.ToDouble(Total);
                 }
