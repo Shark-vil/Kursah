@@ -15,30 +15,6 @@ namespace Kursah.ViewModel
         public static List<Stage_3M> Stage_3_Data { get; set; }
         public SimpleCommand MathTotal { get; set; }
 
-        private string _total;
-        private string _error;
-
-        public string Total
-        {
-            get => _total;
-            set
-            {
-                _total = value;
-
-                OnPropertyChanged();
-            }
-        }
-        public string Error
-        {
-            get => _error;
-            set
-            {
-                _error = value;
-
-                OnPropertyChanged();
-            }
-        }
-
         public Stage_3VM()
         {
             Error = Errors.Normal;
@@ -48,6 +24,7 @@ namespace Kursah.ViewModel
 
             MathTotal = new SimpleCommand(() =>
             {
+<<<<<<< HEAD
                 if (Stage_3_Data == null || Stage_3_Data.Count == 0)
                 {
                     Total = "";
@@ -73,6 +50,9 @@ namespace Kursah.ViewModel
                 SmallestTotal.Stage_3Min = result;
 
                 Total = result.ToString();
+=======
+
+>>>>>>> parent of 40f795b... Расчёт БД ценовых показателей - Stage_3
             });
         }
     }
