@@ -15,7 +15,7 @@
         <DataGrid
             Name="Stage_3DataGrid"
             Grid.Row="0"
-            ItemsSource="{Binding Stage_1_2_Data, Mode=OneWay}"
+            ItemsSource="{Binding Stage_3_Data, Mode=OneWay}"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserAddRows="False"

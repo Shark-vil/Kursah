@@ -7,7 +7,7 @@ namespace Kursah.Model
         private bool _isSelected;
 
         public string GoodName { get; set; }
-        public double Price { get; set; }
+        public double GoodPrice { get; set; }
 
         public bool IsSelected
         {

@@ -1,7 +1,5 @@
-﻿    using BaseMVVM.Abstraction;
-
-    using Kursah.ViewModel;
-
+﻿using BaseMVVM.Abstraction;
+using Kursah.ViewModel;
 
 namespace Kursah.Model
 {
