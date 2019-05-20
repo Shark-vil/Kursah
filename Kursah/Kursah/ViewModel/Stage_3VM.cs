@@ -70,6 +70,8 @@ namespace Kursah.ViewModel
 
                 double result = summ / count;
 
+                SmallestTotal.Stage_3Min = result;
+
                 Total = result.ToString();
             });
         }
