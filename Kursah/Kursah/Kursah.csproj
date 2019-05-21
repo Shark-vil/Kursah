@@ -103,39 +103,42 @@
     <Compile Include="Common\Queries.cs" />
     <Compile Include="Model\Answers.cs" />
     <Compile Include="Model\Goods.cs">
-      <DependentUpon>kursah.tt</DependentUpon>
+      <DependentUpon>kursahEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GoodsCounts.cs" />
     <Compile Include="Model\GoodsMaxPrice.cs" />
-    <Compile Include="Model\kursah.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>kursah.Context.tt</DependentUpon>
+    <Compile Include="Model\Goods_prices.cs">
+      <DependentUpon>kursahEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\kursah.cs">
+    <Compile Include="Model\kursahEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>kursah.tt</DependentUpon>
+      <DependentUpon>kursahEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\kursah.Designer.cs">
+    <Compile Include="Model\kursahEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>kursah.edmx</DependentUpon>
+      <DependentUpon>kursahEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\kursahEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kursahEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Offers.cs">
-      <DependentUpon>kursah.tt</DependentUpon>
+      <DependentUpon>kursahEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Offers_goods.cs">
-      <DependentUpon>kursah.tt</DependentUpon>
+      <DependentUpon>kursahEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Payment_types.cs">
-      <DependentUpon>kursah.tt</DependentUpon>
+      <DependentUpon>kursahEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Providers.cs">
-      <DependentUpon>kursah.tt</DependentUpon>
+      <DependentUpon>kursahEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Provide_offers_goods.cs">
-      <DependentUpon>kursah.tt</DependentUpon>
+      <DependentUpon>kursahEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SmallestTotal.cs" />
     <Compile Include="Model\Stage_1_1M.cs" />
@@ -239,25 +242,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="Model\kursah.Context.tt">
+    <Content Include="Model\kursahEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>kursah.edmx</DependentUpon>
-      <LastGenOutput>kursah.Context.cs</LastGenOutput>
+      <DependentUpon>kursahEntities.edmx</DependentUpon>
+      <LastGenOutput>kursahEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\kursah.tt">
+    <Content Include="Model\kursahEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>kursah.edmx</DependentUpon>
-      <LastGenOutput>kursah.cs</LastGenOutput>
+      <DependentUpon>kursahEntities.edmx</DependentUpon>
+      <LastGenOutput>kursahEntities.cs</LastGenOutput>
     </Content>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Model\kursah.edmx">
+    <EntityDeploy Include="Model\kursahEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>kursah.Designer.cs</LastGenOutput>
+      <LastGenOutput>kursahEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\kursah.edmx.diagram">
-      <DependentUpon>kursah.edmx</DependentUpon>
+    <None Include="Model\kursahEntities.edmx.diagram">
+      <DependentUpon>kursahEntities.edmx</DependentUpon>
     </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>

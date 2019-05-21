@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\Spangls\source\repos\Kursah\Kursah\Kursah\Model\kursah.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\Spangls\source\repos\Kursah\Kursah\Kursah\Model\kursahEntities.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

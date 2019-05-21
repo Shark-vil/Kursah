@@ -73,6 +73,8 @@ namespace Kursah.ViewModel
                     Total = goodTotal.ToString();
                     SmallestTotal.Stage_2Min = Convert.ToDouble(Total);
                 }
+                else
+                    Total = "";
             });
         }
     }

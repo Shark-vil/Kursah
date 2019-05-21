@@ -4,13 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище kursahEntities" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище kursahModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Goods">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goods_prices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="good_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="double" Nullable="false" />
         </EntityType>
         <EntityType Name="Offers">
           <Key>
@@ -57,8 +65,9 @@
           <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="bad" Type="bool" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="Хранилище kursahEntitiesContainer">
+        <EntityContainer Name="Хранилище kursahModelContainer">
           <EntitySet Name="Goods" EntityType="Self.Goods" Schema="kursah" store:Type="Tables" />
+          <EntitySet Name="Goods_prices" EntityType="Self.Goods_prices" Schema="kursah" store:Type="Tables" />
           <EntitySet Name="Offers" EntityType="Self.Offers" Schema="kursah" store:Type="Tables" />
           <EntitySet Name="Offers_goods" EntityType="Self.Offers_goods" Schema="kursah" store:Type="Tables" />
           <EntitySet Name="Payment_types" EntityType="Self.Payment_types" Schema="kursah" store:Type="Tables" />
@@ -69,13 +78,21 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="kursahEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="kursahModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Goods">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goods_prices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="good_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="Offers">
           <Key>
@@ -122,8 +139,9 @@
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="bad" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="kursahEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Goods" EntityType="Self.Goods" />
+          <EntitySet Name="Goods_prices" EntityType="Self.Goods_prices" />
           <EntitySet Name="Offers" EntityType="Self.Offers" />
           <EntitySet Name="Offers_goods" EntityType="Self.Offers_goods" />
           <EntitySet Name="Payment_types" EntityType="Self.Payment_types" />
@@ -135,17 +153,26 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище kursahEntitiesContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище kursahModelContainer" CdmEntityContainer="kursahEntities">
           <EntitySetMapping Name="Goods">
-            <EntityTypeMapping TypeName="kursahEntities.Goods">
+            <EntityTypeMapping TypeName="kursahModel.Goods">
               <MappingFragment StoreEntitySet="Goods">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Goods_prices">
+            <EntityTypeMapping TypeName="kursahModel.Goods_prices">
+              <MappingFragment StoreEntitySet="Goods_prices">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="good_id" ColumnName="good_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Offers">
-            <EntityTypeMapping TypeName="kursahEntities.Offers">
+            <EntityTypeMapping TypeName="kursahModel.Offers">
               <MappingFragment StoreEntitySet="Offers">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -154,7 +181,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Offers_goods">
-            <EntityTypeMapping TypeName="kursahEntities.Offers_goods">
+            <EntityTypeMapping TypeName="kursahModel.Offers_goods">
               <MappingFragment StoreEntitySet="Offers_goods">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="goods_id" ColumnName="goods_id" />
@@ -165,7 +192,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payment_types">
-            <EntityTypeMapping TypeName="kursahEntities.Payment_types">
+            <EntityTypeMapping TypeName="kursahModel.Payment_types">
               <MappingFragment StoreEntitySet="Payment_types">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -173,7 +200,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Provide_offers_goods">
-            <EntityTypeMapping TypeName="kursahEntities.Provide_offers_goods">
+            <EntityTypeMapping TypeName="kursahModel.Provide_offers_goods">
               <MappingFragment StoreEntitySet="Provide_offers_goods">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="provider_id" ColumnName="provider_id" />
@@ -186,7 +213,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Providers">
-            <EntityTypeMapping TypeName="kursahEntities.Providers">
+            <EntityTypeMapping TypeName="kursahModel.Providers">
               <MappingFragment StoreEntitySet="Providers">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />

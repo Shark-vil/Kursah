@@ -12,7 +12,7 @@ namespace Kursah.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class kursahEntities : DbContext
     {
         public static kursahEntities Instane;
@@ -20,6 +20,31 @@ namespace Kursah.Model
         public kursahEntities()
             : base("name=kursahEntities")
         {
+        }
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
+        public virtual DbSet<Goods> Goods { get; set; }
+        public virtual DbSet<Goods_prices> Goods_prices { get; set; }
+        public virtual DbSet<Offers> Offers { get; set; }
+        public virtual DbSet<Offers_goods> Offers_goods { get; set; }
+        public virtual DbSet<Payment_types> Payment_types { get; set; }
+        public virtual DbSet<Provide_offers_goods> Provide_offers_goods { get; set; }
+        public virtual DbSet<Providers> Providers { get; set; }
+
+        public static void Close()
+            => Instane.Dispose();
+
+        public static void Update()
+        {
+            try
+            {
+                Instane.SaveChanges();
+            }
+            catch (Exception) { }
         }
 
         public static void Start()
@@ -32,30 +57,7 @@ namespace Kursah.Model
             Instane.Payment_types.Load();
             Instane.Provide_offers_goods.Load();
             Instane.Providers.Load();
+            Instane.Goods_prices.Load();
         }
-
-        public static void Update()
-        {
-            try
-            {
-                Instane.SaveChanges();
-            }
-            catch (Exception) { }
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-
-        public virtual DbSet<Goods> Goods { get; set; }
-        public virtual DbSet<Offers> Offers { get; set; }
-        public virtual DbSet<Offers_goods> Offers_goods { get; set; }
-        public virtual DbSet<Payment_types> Payment_types { get; set; }
-        public virtual DbSet<Provide_offers_goods> Provide_offers_goods { get; set; }
-        public virtual DbSet<Providers> Providers { get; set; }
-
-        public static void Close()
-            => Instane.Dispose();
     }
 }
