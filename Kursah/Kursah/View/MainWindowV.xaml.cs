@@ -10,15 +10,11 @@ namespace Kursah.View
     /// </summary>
     public partial class MainWindowV: Window
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-
         private int radioButtonNum;
 
         public MainWindowV()
         {
             InitializeComponent();
-
-            logger.Info("Application started");
         }
 
         public int RadioButtonNum
