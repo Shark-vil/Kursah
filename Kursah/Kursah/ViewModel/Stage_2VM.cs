@@ -49,8 +49,11 @@ namespace Kursah.ViewModel
             MathTotal = new SimpleCommand(() =>
             {
                 double goodTotal = 0;
+                Error = Errors.Normal;
+
                 if (InitializeVM.KIF <= 0)
                     Error = Errors.NoKIF;
+
                 if (Error == Errors.Normal)
                 {
                     foreach (GoodsCounts match in InitializeVM.Counts)
@@ -66,10 +69,6 @@ namespace Kursah.ViewModel
                         if (match.Count > 0)
                             goodTotal += (goodSum / Stage_2_Data.FindAll(item => item.GoodName == match.Good.name).Count);
                     }
-
-                    //// Изменение БД в Stage_3VM
-                    //for (int i = 0; i < Stage_3VM.Stage_3_Data.Count; i++)
-                    //    Stage_3VM.Stage_3_Data[i].GoodPrice = Stage_2_Data[i].PriceNew;
 
                     Total = goodTotal.ToString();
                     SmallestTotal.Stage_2Min = Convert.ToDouble(Total);
