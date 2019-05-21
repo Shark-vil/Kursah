@@ -14,11 +14,10 @@ namespace Kursah
     {
         public void Start(object sender, StartupEventArgs e)
         {
-            MainWindowV mainWindow = new MainWindowV()
-            {
-                DataContext = new MainViewVM()
-            };
-            //Application.Current.MainWindow = mainWindow;
+            MainWindowV mainWindow = new MainWindowV();
+            MainViewVM mvVM = new MainViewVM();
+            Lists.SetMV(ref mvVM);
+            mainWindow.DataContext = mvVM;
             mainWindow.Closing += (o, arg) => kursahEntities.Close();
             mainWindow.Show();
         }

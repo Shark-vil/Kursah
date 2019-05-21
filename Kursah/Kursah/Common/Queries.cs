@@ -21,10 +21,9 @@
             "LEFT JOIN `kursah`.`Offers_goods` ON `Offers`.`id` = `Offers_goods`.`offer_id`  " +
             "LEFT JOIN `kursah`.`Goods` ON `Offers_goods`.`goods_id` = `Goods`.`id` ";
         public static string Stage_3Querry { get; } =
-            "SELECT `Goods`.`name` AS `GoodName`, `Offers_goods`.`price` AS `GoodPrice`" +
-            "FROM Offers " +
-            "LEFT JOIN `kursah`.`Offers_goods` ON `Offers`.`id` = `Offers_goods`.`offer_id`  " +
-            "LEFT JOIN `kursah`.`Goods` ON `Offers_goods`.`goods_id` = `Goods`.`id` ";
+            "SELECT `Goods`.`name` AS `GoodName`,`Goods_prices`.`price` AS `GoodPrice` " +
+            "FROM Goods " +
+            "LEFT JOIN `kursah`.`Goods_prices` ON `Goods`.`id` = `Goods_prices`.`good_id` ";
         public static string Stage_4Querry { get; } =
             "SELECT `Goods`.`name` AS `GoodName`, `Offers_goods`.`price` AS `GoodPrice`" +
             "FROM Offers " +

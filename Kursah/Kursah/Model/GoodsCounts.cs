@@ -17,8 +17,7 @@ namespace Kursah.Model
             set
             {
                 _isSelected = value;
-
-                InitializeVM.Select();
+                
                 OnPropertyChanged();
             }
         }

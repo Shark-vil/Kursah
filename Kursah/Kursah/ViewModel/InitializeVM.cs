@@ -48,23 +48,5 @@ namespace Kursah.ViewModel
             }
             Counts = tmpList;
         }
-
-        public static void Select()
-        {
-            if (Counts != null)
-            {
-                bool check = false;
-                foreach (GoodsCounts item in Counts)
-                {
-                    if (item.IsSelected)
-                        check = true;
-                }
-                if (check)
-                    MainViewVM.CanContinue = true;                
-                else
-                    MainViewVM.CanContinue = false;
-
-            }
-        }
     }
 }

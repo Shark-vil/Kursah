@@ -32,7 +32,8 @@
                         GroupName="Pages"
                         IsChecked="True"
                         Content="Введение" 
-                        Checked="RadioButtonsChecked"/>
+                        Checked="RadioButtonsChecked"
+                        Command="{Binding RefreshData}"/>
                     <RadioButton
                         Name="Stage_1_1_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
@@ -40,7 +41,8 @@
                         GroupName="Pages"
                         IsChecked="False"                        
                         Content="Коммерческие предложения, 1 этап"
-                        Checked="RadioButtonsChecked"/>
+                        Checked="RadioButtonsChecked"
+                        Command="{Binding RefreshData}"/>
                     <RadioButton
                         Name="Stage_1_2_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
@@ -48,7 +50,8 @@
                         GroupName="Pages"
                         IsChecked="False"
                         Content="Коммерческие предложения, 2 этап"
-                        Checked="RadioButtonsChecked"/>
+                        Checked="RadioButtonsChecked"
+                        Command="{Binding RefreshData}"/>
                     <RadioButton
                         Name="Stage_2_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
@@ -56,7 +59,8 @@
                         GroupName="Pages"
                         IsChecked="False"
                         Content="Реестр контрактов"
-                        Checked="RadioButtonsChecked"/>
+                        Checked="RadioButtonsChecked"
+                        Command="{Binding RefreshData}"/>
                     <RadioButton
                         Name="Stage_3_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
@@ -64,7 +68,8 @@
                         GroupName="Pages"
                         IsChecked="False"
                         Content="БД ценовых показателей"
-                        Checked="RadioButtonsChecked"/>
+                        Checked="RadioButtonsChecked"
+                        Command="{Binding RefreshData}"/>
                     <RadioButton
                         Name="Stage_4_RB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
@@ -72,7 +77,8 @@
                         GroupName="Pages"
                         IsChecked="False"
                         Content="Затратный метод"
-                        Checked="RadioButtonsChecked"/>
+                        Checked="RadioButtonsChecked"
+                        Command="{Binding RefreshData}"/>
                     <RadioButton
                         Name="FinalizeRB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
@@ -80,7 +86,8 @@
                         GroupName="Pages"
                         IsChecked="False"
                         Content="Выбор НМЦК"
-                        Checked="RadioButtonsChecked"/>
+                        Checked="RadioButtonsChecked"
+                        Command="{Binding RefreshData}"/>
                 </StackPanel>
             </ScrollViewer>
         </md:ColorZone>
@@ -112,7 +119,7 @@
             Grid.Row="3"
             Margin="50,10"
             VerticalAlignment="Center" Height="110"
-            Visibility="{Binding ElementName=IntroductionRB, Path=IsChecked, Converter={StaticResource BoolVisibleInverted}}">
+            >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="100"/>
@@ -127,14 +134,15 @@
                 md:HintAssist.Hint="Вывод:"
                 Grid.Column="0"
                 Height="110"
-                Name="AnswerTextBox"/>
+                Name="AnswerTextBox"
+                Visibility="{Binding ElementName=IntroductionRB, Path=IsChecked, Converter={StaticResource BoolVisibleInverted}}"/>
             <Button 
-                IsEnabled="{Binding CanContinueLocal, Mode=OneWay}"
                 Name="NextButton"
                 Grid.Column="1"
                 Width="100"
                 Content="Далее" 
-                Click="NextButton_Click"/>
+                Click="NextButton_Click"
+                Command="{Binding RefreshData}"/>
         </Grid>
     </Grid>
 </Window>
