@@ -81,7 +81,7 @@ namespace Kursah.ViewModel
                             goodSum += int.Parse(row.GoodPrice);
 
                         }
-                        if (match.Count > 0)
+                        if (match.Count > 0 && goodSum != 0)
                             goodTotal += (goodSum / Stage_1_2_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name).Count) * match.Count;
                     }
                     if (Error == Errors.Normal)

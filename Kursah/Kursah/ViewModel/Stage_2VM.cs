@@ -66,7 +66,7 @@ namespace Kursah.ViewModel
                             row.PriceNew = row.PriceNewPerOne * match.Count;
                             goodSum += row.PriceNew;
                         }
-                        if (match.Count > 0)
+                        if (match.Count > 0 && goodSum != 0)
                             goodTotal += (goodSum / Stage_2_Data.FindAll(item => item.GoodName == match.Good.name).Count);
                     }
 
