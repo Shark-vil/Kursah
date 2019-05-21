@@ -5,6 +5,9 @@ using System.Windows.Data;
 
 namespace Kursah.Common
 {
+    /// <summary>
+    /// Конвертирует булево значение в состояние отображения
+    /// </summary>
     public class BoolToVisibleInvertedConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

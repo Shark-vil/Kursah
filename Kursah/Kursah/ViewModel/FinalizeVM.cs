@@ -4,11 +4,11 @@ using Kursah.Model;
 using BaseMVVM.Command;
 using BaseMVVM.Abstraction;
 
-using System.Collections.Generic;
-using System;
-
 namespace Kursah.ViewModel
 {
+    /// <summary>
+    /// Класс для взаимодейтвия данных и отображения вывода.
+    /// </summary>
     public class FinalizeVM : ViewModelBase
     {
         private double _stage_1_1MinLocal;
@@ -81,6 +81,8 @@ namespace Kursah.ViewModel
                 Stage_3MinLocal = SmallestTotal.Stage_3Min;
                 Stage_4MinLocal = SmallestTotal.Stage_4Min;
             });
+
+
         }
     }
 }

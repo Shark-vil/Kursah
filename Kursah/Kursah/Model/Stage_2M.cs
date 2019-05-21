@@ -4,6 +4,9 @@ using BaseMVVM.Abstraction;
 
 namespace Kursah.Model
 {
+    /// <summary>
+    /// Модель данных для Стадии_2
+    /// </summary>
     public class Stage_2M : ViewModelBase
     {
         private double _iPC;

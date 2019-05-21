@@ -9,6 +9,9 @@ using System;
 
 namespace Kursah.ViewModel
 {
+    /// <summary>
+    /// Класс для взаимодейтвия данных и отображения Стадии_2.
+    /// </summary>
     public class Stage_2VM : ViewModelBase
     {
         public static List<Stage_2M> Stage_2_Data { get; private set; }

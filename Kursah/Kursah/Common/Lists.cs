@@ -1,9 +1,10 @@
-﻿using Kursah.Model;
-using Kursah.ViewModel;
-using Kursah.View;
+﻿using Kursah.ViewModel;
 
 namespace Kursah.Common
 {
+    /// <summary>
+    /// Содержит ссылку на контекст приложения
+    /// </summary>
     public static class Lists
     {
         public static MainViewVM MainWindow { get; set; }

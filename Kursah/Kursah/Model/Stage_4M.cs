@@ -1,8 +1,10 @@
 ﻿using BaseMVVM.Abstraction;
 
-
 namespace Kursah.Model
 {
+    /// <summary>
+    /// Модель данных для Стадии_4
+    /// </summary>
     public class Stage_4M : ViewModelBase
     {
         private bool _isSelected;

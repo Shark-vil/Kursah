@@ -5,10 +5,12 @@ using BaseMVVM.Command;
 using BaseMVVM.Abstraction;
 
 using System.Collections.Generic;
-using System;
 
 namespace Kursah.ViewModel
 {
+    /// <summary>
+    /// Класс для взаимодейтвия данных и отображения Стадии_4.
+    /// </summary>
     public class Stage_4VM : ViewModelBase
     {
         public static List<Stage_4M> Stage_4_Data { get; set; }

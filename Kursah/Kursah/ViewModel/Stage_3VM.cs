@@ -5,10 +5,12 @@ using BaseMVVM.Command;
 using BaseMVVM.Abstraction;
 
 using System.Collections.Generic;
-using System;
 
 namespace Kursah.ViewModel
 {
+    /// <summary>
+    /// Класс для взаимодейтвия данных и отображения Стадии_3.
+    /// </summary>
     public class Stage_3VM : ViewModelBase
     {
         public List<Stage_3M> Stage_3_Data { get; set; }
@@ -48,7 +50,7 @@ namespace Kursah.ViewModel
             MathTotal = new SimpleCommand(() =>
             {
                 double summ = 0;
-                int count = InitializeVM.Counts.FindAll(i=>i.IsSelected).Count;
+                int count = InitializeVM.Counts.FindAll(i => i.IsSelected).Count;
                 Error = Errors.Normal;
 
                 if (count > 0)
@@ -61,9 +63,8 @@ namespace Kursah.ViewModel
                             {
                                 Error = Errors.WrongSelect;
                                 break;
-                            }                            
+                            }
                         }
-                       
 
                         if (Error == Errors.Normal)
                         {

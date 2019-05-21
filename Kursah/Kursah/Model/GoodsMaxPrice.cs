@@ -1,5 +1,8 @@
 ﻿namespace Kursah.Model
 {
+    /// <summary>
+    /// Модель данных. Содержит товар и его максимальную цену.
+    /// </summary>
     public class GoodsMaxPrice
     {
         public Goods Good { get; set; }

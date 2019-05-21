@@ -1,9 +1,12 @@
 ﻿using BaseMVVM.Abstraction;
 
-using Kursah.ViewModel;
+using Kursah.Common;
 
 namespace Kursah.Model
 {
+    /// <summary>
+    /// Модель данных для Стадии_1_2
+    /// </summary>
     public class Stage_1_2M : ViewModelBase
     {
         private bool _isSelected;
@@ -25,11 +28,11 @@ namespace Kursah.Model
                 _isSelected = value;
                 if (_isSelected)
                 {
-                    Stage_1_2VM.SelectSecond(Provider_name);
+                    SelectSecond(Provider_name);
                 }
                 else
                 {
-                    Stage_1_2VM.DeselectSecond(Provider_name);
+                    DeselectSecond(Provider_name);
                 }
 
                 OnPropertyChanged();
@@ -39,6 +42,31 @@ namespace Kursah.Model
         public void Select(bool value)
         {
             _isSelected = value;
+        }
+
+        /// <summary>
+        /// Выбор остальных товаров поставщика
+        /// </summary>
+        /// <param name="providerName">Наименование поставщика</param>
+        public static void SelectSecond(string providerName)
+        {
+            foreach (Stage_1_2M item in Lists.MainWindow.Stage_1_2_Context.Stage_1_2_Data.FindAll(item => item.Provider_name == providerName))
+            {
+                if (!item.IsSelected)
+                    item.Select(true);
+            }
+        }
+        /// <summary>
+        /// ОТмена выбора остальных товаров поставщика
+        /// </summary>
+        /// <param name="providerName">Наименование поставщика</param>
+        public static void DeselectSecond(string providerName)
+        {
+            foreach (Stage_1_2M item in Lists.MainWindow.Stage_1_2_Context.Stage_1_2_Data.FindAll(item => item.Provider_name == providerName))
+            {
+                if (item.IsSelected)
+                    item.Select(false);
+            }
         }
     }
 }

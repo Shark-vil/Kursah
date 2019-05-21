@@ -1,8 +1,13 @@
 ﻿using BaseMVVM.Abstraction;
+
 using Kursah.ViewModel;
+using Kursah.Common;
 
 namespace Kursah.Model
 {
+    /// <summary>
+    /// Модель данных для Стадии_1_1
+    /// </summary>
     public class Stage_1_1M : ViewModelBase
     {
         private bool _isSelected;
@@ -17,14 +22,11 @@ namespace Kursah.Model
             set
             {
                 _isSelected = value;
+
                 if (_isSelected)
-                {
-                   Stage_1_1VM.SelectSecond(Provider_name);
-                }
+                    SelectSecond(Provider_name);
                 else
-                {
-                   Stage_1_1VM.DeselectSecond(Provider_name);
-                }
+                    DeselectSecond(Provider_name);                
 
                 OnPropertyChanged();
             }
@@ -38,6 +40,32 @@ namespace Kursah.Model
         public override string ToString()
         {
             return string.Concat(Provider_name, " ", Good_name, " ", GoodPrice);
+        }
+
+        /// <summary>
+        /// Выбор остальных товаров поставщика
+        /// </summary>
+        /// <param name="providerName">Наименование поставщика</param>
+        public static void SelectSecond(string providerName)
+        {
+            foreach (Stage_1_1M item in Lists.MainWindow.Stage_1_1_Context.Stage_1_1_Data.FindAll(item => item.Provider_name == providerName))
+            {
+                if (!item.IsSelected)
+                    item.Select(true);
+            }
+        }
+
+        /// <summary>
+        /// ОТмена выбора остальных товаров поставщика
+        /// </summary>
+        /// <param name="providerName">Наименование поставщика</param>
+        public static void DeselectSecond(string providerName)
+        {
+            foreach (Stage_1_1M item in Lists.MainWindow.Stage_1_1_Context.Stage_1_1_Data.FindAll(item => item.Provider_name == providerName))
+            {
+                if (item.IsSelected)
+                    item.Select(false);
+            }
         }
     }
 }

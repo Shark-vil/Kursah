@@ -1,5 +1,8 @@
 ﻿namespace Kursah.Common
 {
+    /// <summary>
+    /// Класс содержит тексты ошибок
+    /// </summary>
     public static class Errors
     {
         public static string Normal { get; } = "";

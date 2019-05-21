@@ -6,6 +6,9 @@ using BaseMVVM.Abstraction;
 
 namespace Kursah.ViewModel
 {
+    /// <summary>
+    /// Класс для взаимодейтвия данных и отображения основного окна.
+    /// </summary>
     public class MainViewVM : ViewModelBase
     {
         private bool _canContinueLocal;
@@ -22,35 +25,10 @@ namespace Kursah.ViewModel
             Stage_3_Context = new Stage_3VM();
             Stage_4_Context = new Stage_4VM();
             FinalizeContext = new FinalizeVM();
-           
+
 
             RefreshData = new SimpleCommand(() =>
             {
-                //if (InitializeVM.Counts != null)
-                //{
-                //    bool check = false;
-                //    string addToQ = "";
-                //    foreach (GoodsCounts item in InitializeVM.Counts)
-                //    {
-                //        if (item.IsSelected)
-                //        {
-                //            check = true;
-                //            addToQ += addToQ.Contains(" WHERE `Goods`.`name` = ") ? "" : " WHERE `Goods`.`name` = ";
-                //            addToQ += string.Concat(" \"", item.Good.name, "\" OR");
-                //        }
-                //    }
-                //    if (addToQ != "")
-                //        addToQ = addToQ.Remove(addToQ.Length-2, 2);
-                //    if (check)
-                //    {
-                //        //Stage_1_1_Context.Stage_1_1_Data = kursahEntities.Instane.Database.SqlQuery<Stage_1_1M>(Queries.Stage_1_1Querry + addToQ).ToListAsync().Result;
-                //    }
-                //    else
-                //    {
-
-                //    }
-
-                //}
             });
         }
 
@@ -62,7 +40,7 @@ namespace Kursah.ViewModel
         public Stage_4VM Stage_4_Context { get; set; }
         public FinalizeVM FinalizeContext { get; set; }
 
-        public string Answer { get; set; }        
+        public string Answer { get; set; }
 
         public bool CanContinueLocal
         {

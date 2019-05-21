@@ -7,6 +7,9 @@ using Kursah.Model;
 
 namespace Kursah.ViewModel
 {
+    /// <summary>
+    /// Класс для взаимодейтвия данных и отображения введения.
+    /// </summary>
     public class InitializeVM : ViewModelBase
     {
         private int _maxDeliveryTideLocal;

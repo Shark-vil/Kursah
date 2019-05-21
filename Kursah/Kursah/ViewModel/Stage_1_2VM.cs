@@ -10,11 +10,11 @@ using System;
 namespace Kursah.ViewModel
 {
     /// <summary>
-    /// Модель представленния для Stage_1_2
+    /// Класс для взаимодейтвия данных и отображения Стадии_1_2.
     /// </summary>
     public class Stage_1_2VM : ViewModelBase
     {
-        public static List<Stage_1_2M> Stage_1_2_Data { get; private set; }
+        public List<Stage_1_2M> Stage_1_2_Data { get; private set; }
 
         public string MinPrice { get; set; }
         public string MaxPrice { get; set; }
@@ -94,9 +94,14 @@ namespace Kursah.ViewModel
                     Error = Errors.NoSelected;
             });
 
-           
+            CalculateMinMax();
+        }
 
-            //Расчет минимальной и максимальной цен
+        /// <summary>
+        /// Расчет минимальной и максимальной цен на товары
+        /// </summary>
+        public void CalculateMinMax()
+        {
             foreach (GoodsCounts match in InitializeVM.Counts)
             {
                 if (Stage_1_2_Data.FindAll(item => item.Good_name == match.Good.name).Count > 0)
@@ -117,33 +122,6 @@ namespace Kursah.ViewModel
                     MinPrice += string.Concat(tmpMin.ToString(), "; ");
                     MaxPrice += string.Concat(tmpMax.ToString(), "; ");
                 }
-            }
-        }
-
-        /// <summary>
-        /// Выбор остальных товаров поставщика
-        /// </summary>
-        /// <param name="providerName">Наименование поставщика</param>
-        public static void SelectSecond(string providerName)
-        {
-            List<Stage_1_2M> tmpList = Stage_1_2_Data.FindAll(item => item.Provider_name == providerName);
-            foreach (Stage_1_2M item in tmpList)
-            {
-                if (!item.IsSelected)
-                    item.Select(true);
-            }
-        }
-        /// <summary>
-        /// ОТмена выбора остальных товаров поставщика
-        /// </summary>
-        /// <param name="providerName">Наименование поставщика</param>
-        public static void DeselectSecond(string providerName)
-        {
-            List<Stage_1_2M> tmpList = Stage_1_2_Data.FindAll(item => item.Provider_name == providerName);
-            foreach (Stage_1_2M item in tmpList)
-            {
-                if (item.IsSelected)
-                    item.Select(false);
             }
         }
     }

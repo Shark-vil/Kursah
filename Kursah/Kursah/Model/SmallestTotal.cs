@@ -1,5 +1,8 @@
 ﻿namespace Kursah.Model
 {
+    /// <summary>
+    /// Класс для хранения рассчитаных НМЦК.
+    /// </summary>
     public static class SmallestTotal
     {   
         public static double Stage_1_1Min { get; set; }

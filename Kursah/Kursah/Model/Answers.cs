@@ -1,5 +1,8 @@
 ﻿namespace Kursah.Model
 {
+    /// <summary>
+    /// Класс для хранения выводов пользователя
+    /// </summary>
     public class Answers
     {
         public static string Stage_1_1A { get; set; }

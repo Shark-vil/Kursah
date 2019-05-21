@@ -1,9 +1,10 @@
 ﻿using BaseMVVM.Abstraction;
 
-using Kursah.ViewModel;
-
 namespace Kursah.Model
 {
+    /// <summary>
+    /// Модель данных. Содержит товар и его количество.
+    /// </summary>
     public class GoodsCounts : ViewModelBase
     {
         private bool _isSelected;

@@ -1,5 +1,8 @@
 ﻿namespace Kursah.Common
 {
+    /// <summary>
+    /// Класс содержит тексты запросов к базе данных
+    /// </summary>
     public static class Queries
     {
         public static string Stage_1_1Querry { get; } = 
