@@ -5,8 +5,11 @@ using BaseMVVM.Abstraction;
 
 namespace Kursah.ViewModel
 {
-    public class MainViewVM
+    public class MainViewVM : ViewModelBase
     {
+        private static bool s_canContinue;
+        private bool _canContinueLocal;
+
         public MainViewVM()
         {
             kursahEntities.Start();
@@ -30,5 +33,18 @@ namespace Kursah.ViewModel
         public FinalizeVM FinalizeContext { get; set; }
 
         public string Answer { get; set; }
+
+        public static bool CanContinue { get; set; }
+
+        public bool CanContinueLocal
+        {
+            get => _canContinueLocal;
+            set
+            {
+                _canContinueLocal = value;
+
+                OnPropertyChanged();
+            }
+        }
     }
 }

@@ -41,22 +41,30 @@ namespace Kursah.ViewModel
 
         static InitializeVM()
         {
-            RefreshList();
-        }
-
-        public InitializeVM()
-        {
-            RefreshList();
-        }
-
-        public static void RefreshList()
-        {
             List<GoodsCounts> tmpList = new List<GoodsCounts>();
             foreach (Goods good in kursahEntities.Instane.Goods)
             {
                 tmpList.Add(new GoodsCounts(good, 0));
             }
             Counts = tmpList;
+        }
+
+        public static void Select()
+        {
+            if (Counts != null)
+            {
+                bool check = false;
+                foreach (GoodsCounts item in Counts)
+                {
+                    if (item.IsSelected)
+                        check = true;
+                }
+                if (check)
+                    MainViewVM.CanContinue = true;                
+                else
+                    MainViewVM.CanContinue = false;
+
+            }
         }
     }
 }

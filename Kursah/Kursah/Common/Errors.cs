@@ -9,5 +9,6 @@
         public static string LongDelivery { get; } = "Один из поставщиков предлагает слишком долгую доставку";
         public static string NoSelected { get; } = "Не выбрано ни одного поставщика";
         public static string NoKIF { get; } = "КИФ не указан или указан не верно";
+
     }
 }

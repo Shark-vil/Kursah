@@ -128,7 +128,8 @@
                 Grid.Column="0"
                 Height="110"
                 Name="AnswerTextBox"/>
-            <Button  
+            <Button 
+                IsEnabled="{Binding CanContinueLocal, Mode=OneWay}"
                 Name="NextButton"
                 Grid.Column="1"
                 Width="100"

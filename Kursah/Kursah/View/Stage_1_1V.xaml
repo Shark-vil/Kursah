@@ -46,9 +46,7 @@
                     md:DataGridAssist.EnableEditBoxAssist="True"
                     Binding="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-                    >
-                </DataGridCheckBoxColumn>
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"/>
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding Provider_name}"
                     Header="Поставщик"

@@ -9,18 +9,33 @@
     d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-
+        <StackPanel
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+            <TextBlock
+                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                Text="Выберите товары и укажите их количество"
+                Margin="20 0"/>
+        </StackPanel>
         <DataGrid
             ItemsSource="{Binding Counts, Mode=TwoWay}"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserDeleteRows="False"
             CanUserAddRows="False"
-            Width="400">
+            Width="400"
+            Grid.Row="1">
             <DataGrid.Columns>
+                <DataGridCheckBoxColumn
+                    md:DataGridAssist.EnableEditBoxAssist="True"
+                    Binding="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"/>
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding Good}"
                     Header="Товар"
@@ -33,7 +48,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel
-            Grid.Row="1"
+            Grid.Row="2"
             VerticalAlignment="Center"
             Orientation="Vertical">
             <StackPanel            

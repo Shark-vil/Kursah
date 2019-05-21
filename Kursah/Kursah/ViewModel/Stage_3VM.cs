@@ -47,14 +47,6 @@ namespace Kursah.ViewModel
 
             MathTotal = new SimpleCommand(() =>
             {
-
-                if (Stage_3_Data == null || Stage_3_Data.Count == 0)
-                {
-                    Total = "";
-                    Error = "Нету объектов, которые бы удовлетворяли требованиям вычисления";
-                    return;
-                }
-
                 double summ = 0;
                 int count = InitializeVM.Counts.Count;
 
