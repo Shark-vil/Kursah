@@ -76,9 +76,11 @@ namespace Kursah.ViewModel
                                     Error = Errors.HighPrice;
                                 else
                                     Error = Errors.Normal;
-                                goodSum += int.Parse(row.GoodPrice);
+                                goodSum += Convert.ToDouble(row.GoodPrice);
                             }
-                            goodTotal += (goodSum / Stage_1_1_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name).Count) * match.Count;
+
+                            if (goodSum != 0)
+                                goodTotal += (goodSum / Stage_1_1_Data.FindAll(item => item.IsSelected && item.Good_name == match.Good.name).Count) * match.Count;
                         }
                     }
                     if (Error == "")
