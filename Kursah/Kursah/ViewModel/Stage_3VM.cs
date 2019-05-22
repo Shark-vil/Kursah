@@ -50,45 +50,33 @@ namespace Kursah.ViewModel
             MathTotal = new SimpleCommand(() =>
             {
                 double summ = 0;
-                int count = InitializeVM.Counts.FindAll(i => i.IsSelected).Count;
                 Error = Errors.Normal;
 
-                if (count > 0)
+                if (InitializeVM.Counts.FindAll(i => i.IsSelected).Count <= 0)
+                    Error = Errors.NoSelectedGood;
+                if (Stage_3_Data.FindAll(item => item.IsSelected).Count <= 0)
+                    Error = Errors.NoSelectedGood;
+                foreach (GoodsCounts itemSec in InitializeVM.Counts.FindAll(t => t.IsSelected))
+                    if (Stage_3_Data.Find(i => i.GoodName == itemSec.Good.name && i.IsSelected) == null)
+                        Error = Errors.WrongSelect;
+                foreach (Stage_3M item in Stage_3_Data.FindAll(item => item.IsSelected))
                 {
-                    if (Stage_3_Data.FindAll(item => item.IsSelected).Count > 0)
+                    if (InitializeVM.Counts.Find(i => i.Good.name == item.GoodName && i.IsSelected) == null)
                     {
-                        foreach (GoodsCounts itemSec in InitializeVM.Counts.FindAll(t => t.IsSelected))
-                        {
-                            if (Stage_3_Data.Find(i => i.GoodName == itemSec.Good.name && i.IsSelected) == null)
-                            {
-                                Error = Errors.WrongSelect;
-                                break;
-                            }
-                        }
-
-                        if (Error == Errors.Normal)
-                        {
-                            foreach (Stage_3M item in Stage_3_Data.FindAll(item => item.IsSelected))
-                            {
-                                if (InitializeVM.Counts.Find(i => i.Good.name == item.GoodName && i.IsSelected) == null)
-                                {
-                                    Error = Errors.WrongSelect;
-                                    break;
-                                }
-
-                                summ += item.GoodPrice * InitializeVM.Counts.Find(i => i.Good.name == item.GoodName).Count;
-                            }
-
-                            SmallestTotal.Stage_3Min = summ;
-
-                            Total = summ.ToString();
-                        }
+                        Error = Errors.WrongSelect;
+                        break;
                     }
                     else
-                        Error = Errors.NoSelectedGood;
+                        summ += item.GoodPrice * InitializeVM.Counts.Find(i => i.Good.name == item.GoodName).Count;
+                }
+                if (Error == Errors.Normal)
+                {
+                    SmallestTotal.Stage_3Min = summ;
+
+                    Total = summ.ToString();
                 }
                 else
-                    Error = Errors.NoSelectedGood;
+                    Total = "";
             });
         }
     }

@@ -59,11 +59,16 @@ namespace Kursah.ViewModel
 
             MathTotal = new SimpleCommand(() =>
             {
-                if (Stage_1_1_Data.FindAll(item => item.IsSelected).Count > 0)
+                if (InitializeVM.Counts.FindAll(i => i.IsSelected).Count <= 0)
+                    Error = Errors.NoSelectedGood;
+                if (Stage_1_1_Data.FindAll(item => item.IsSelected).Count <= 0)
+                    Error = Errors.NoSelected;
+
+                if (Error == Errors.Normal)
                 {
                     double goodTotal = 0;
 
-                    foreach (GoodsCounts match in InitializeVM.Counts)
+                    foreach (GoodsCounts match in InitializeVM.Counts.FindAll(i => i.IsSelected))
                     {
                         if (match.Count > 0)
                         {
@@ -88,8 +93,6 @@ namespace Kursah.ViewModel
                         SmallestTotal.Stage_1_1Min = Convert.ToDouble(Total);
                     }
                 }
-                else
-                    Error = Errors.NoSelected;
             });
 
             CalculateMinMax();

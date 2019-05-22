@@ -56,10 +56,12 @@ namespace Kursah.ViewModel
 
                 if (InitializeVM.KIF <= 0)
                     Error = Errors.NoKIF;
+                if (InitializeVM.Counts.FindAll(i => i.IsSelected).Count <= 0)
+                    Error = Errors.NoSelectedGood;
 
                 if (Error == Errors.Normal)
                 {
-                    foreach (GoodsCounts match in InitializeVM.Counts)
+                    foreach (GoodsCounts match in InitializeVM.Counts.FindAll(i => i.IsSelected))
                     {
                         double goodSum = 0;
                         foreach (Stage_2M row in Stage_2_Data.FindAll(item => item.GoodName == match.Good.name))
@@ -78,6 +80,8 @@ namespace Kursah.ViewModel
                 }
                 else
                     Total = "";
+
+
             });
         }
     }
