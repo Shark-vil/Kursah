@@ -59,6 +59,8 @@ namespace Kursah.ViewModel
 
             MathTotal = new SimpleCommand(() =>
             {
+                Error = Errors.Normal;
+
                 if (InitializeVM.Counts.FindAll(i => i.IsSelected).Count <= 0)
                     Error = Errors.NoSelectedGood;
                 if (Stage_1_1_Data.FindAll(item => item.IsSelected).Count <= 0)

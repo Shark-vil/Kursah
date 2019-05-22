@@ -125,6 +125,7 @@
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
             <TextBox
+                MaxLength="2048"
                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                 Margin="0,0,32,0"
                 VerticalAlignment="Top"

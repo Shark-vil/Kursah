@@ -29,7 +29,7 @@
             AutoGenerateColumns="False"
             CanUserDeleteRows="False"
             CanUserAddRows="False"
-            Width="400"
+            Width="500"
             Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn
@@ -45,7 +45,8 @@
                 <md:MaterialDataGridTextColumn
                     Binding="{Binding Count}"
                     Header="Количество для закупки"
-                    Width="200"/>
+                    Width="200"
+                    MaxLength="11"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel
@@ -61,6 +62,7 @@
                 Text="Максимальный срок доставки: "
                 Margin="20 0"/>
                 <TextBox
+                MaxLength="4"
                 Text="{Binding MaxDeliveryTideLocal, Mode=TwoWay}"
                 md:HintAssist.Hint="Кол-во дней"
                 Width="200"/>
@@ -73,6 +75,7 @@
                 Text="КИФ: "
                 Margin="20 0"/>
                 <TextBox
+                MaxLength="4"
                 Text="{Binding KIFLocal, Mode=TwoWay}"
                 md:HintAssist.Hint="КИФ"
                 Width="200"/>
