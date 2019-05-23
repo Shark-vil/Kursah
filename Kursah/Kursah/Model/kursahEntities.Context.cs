@@ -50,14 +50,20 @@ namespace Kursah.Model
         public static void Start()
         {
             Instane = new kursahEntities();
-
-            Instane.Goods.Load();
-            Instane.Offers.Load();
-            Instane.Offers_goods.Load();
-            Instane.Payment_types.Load();
-            Instane.Provide_offers_goods.Load();
-            Instane.Providers.Load();
-            Instane.Goods_prices.Load();
+            try
+            {
+                Instane.Goods.Load();
+                Instane.Offers.Load();
+                Instane.Offers_goods.Load();
+                Instane.Payment_types.Load();
+                Instane.Provide_offers_goods.Load();
+                Instane.Providers.Load();
+                Instane.Goods_prices.Load();
+            }
+            catch (Exception)
+            {
+            }
+            
         }
     }
 }
