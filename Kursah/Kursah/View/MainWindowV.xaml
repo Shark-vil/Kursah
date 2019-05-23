@@ -40,7 +40,7 @@
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
                         IsChecked="False"                        
-                        Content="Коммерческие предложения, 1 этап"
+                        Content="Коммерческие предложения"
                         Checked="RadioButtonsChecked"
                         Command="{Binding RefreshData}"/>
                     <RadioButton
@@ -49,7 +49,7 @@
                         BorderThickness="0 0 0 2"
                         GroupName="Pages"
                         IsChecked="False"
-                        Content="Коммерческие предложения, 2 этап"
+                        Content="Коммерческие предложения с доп. параметрами"
                         Checked="RadioButtonsChecked"
                         Command="{Binding RefreshData}"/>
                     <RadioButton
