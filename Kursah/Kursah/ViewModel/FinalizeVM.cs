@@ -3,6 +3,15 @@ using Kursah.Model;
 
 using BaseMVVM.Command;
 using BaseMVVM.Abstraction;
+using System.IO;
+using Word = Microsoft.Office.Interop.Word;
+using System.Reflection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using System.Text.RegularExpressions;
 
 namespace Kursah.ViewModel
 {
@@ -70,6 +79,7 @@ namespace Kursah.ViewModel
         }
 
         public SimpleCommand Refresh { get; set; }
+        public SimpleCommand CreateDoc { get; set; }
 
         public FinalizeVM()
         {
@@ -82,7 +92,65 @@ namespace Kursah.ViewModel
                 Stage_4MinLocal = SmallestTotal.Stage_4Min;
             });
 
+            string dir = "doc_templates";
+            string dirResult = "docs";
+            string fileName = "report";
+            string filePath = dir + "/" + fileName;
+            string filePathResult = dirResult + "/" + fileName;
+            string[] fileEnd = new string[] { "docx", "doc" };
 
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            if (!Directory.Exists(dirResult))
+                Directory.CreateDirectory(dirResult);
+
+            CreateDoc = new SimpleCommand(() =>
+            {
+                for (int i = 0; i < fileEnd.Length; i++)
+                    if (File.Exists(filePath + $".{fileEnd[i]}"))
+                    {
+                        string niceFilePath = filePath + $".{fileEnd[i]}";
+                        string niceFilePathResult = filePathResult + $".{fileEnd[i]}";
+
+                        if (File.Exists(niceFilePathResult))
+                            File.Delete(niceFilePathResult);
+
+                        File.Copy(niceFilePath, niceFilePathResult);
+
+                        Dictionary<string, string> marks = new Dictionary<string, string>()
+                        {
+                            { "Stage_1_1MinLocal", Stage_1_1MinLocal.ToString()},
+                            { "Stage_1_2MinLocal", Stage_1_2MinLocal.ToString()},
+                            { "Stage_2MinLocal", Stage_2MinLocal.ToString()},
+                            { "Stage_3MinLocal", Stage_3MinLocal.ToString()},
+                            { "Date", DateTime.Now.ToLongDateString()}
+                        };
+
+                        using (WordprocessingDocument document = WordprocessingDocument.Open(niceFilePathResult, true))
+                        {
+                            Body documentBody = document.MainDocumentPart.Document.Body;
+                            List<Paragraph> paragraphsWithMarks = documentBody.Descendants<Paragraph>().Where(x => Regex.IsMatch(x.InnerText, @".*\[\w+\].*")).ToList();
+                            foreach (Paragraph paragraph in paragraphsWithMarks)
+                            {
+                                foreach (Match markMatch in Regex.Matches(paragraph.InnerText, @"\[\w+\]", RegexOptions.Compiled))
+                                {
+
+                                    string paragraphMarkValue = markMatch.Value.Trim(new[] { '[', ']' });
+                                    string markValueFromCollection;
+                                    if (marks.TryGetValue(paragraphMarkValue, out markValueFromCollection))
+                                    {
+                                        string editedParagraphText = paragraph.InnerText.Replace(markMatch.Value, markValueFromCollection);
+                                        paragraph.RemoveAllChildren<Run>();
+                                        paragraph.AppendChild<Run>(new Run(new Text(editedParagraphText)));
+                                    }
+                                }
+                            }
+                        }
+
+                        break;
+                    }
+            });
         }
     }
 }

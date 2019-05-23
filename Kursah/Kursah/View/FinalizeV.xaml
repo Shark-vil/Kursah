@@ -80,7 +80,7 @@
                 Content="Обновить"
                 Margin="20 0"/>
             <Button
-                Command="{Binding Refresh}"
+                Command="{Binding CreateDoc}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                 Content="Создать отчет"
