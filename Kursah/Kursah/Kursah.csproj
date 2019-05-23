@@ -169,9 +169,6 @@
     <Compile Include="ViewModel\Stage_2VM.cs" />
     <Compile Include="ViewModel\Stage_3VM.cs" />
     <Compile Include="ViewModel\Stage_4VM.cs" />
-    <Compile Include="View\AnswerV.xaml.cs">
-      <DependentUpon>AnswerV.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\FinalizeV.xaml.cs">
       <DependentUpon>FinalizeV.xaml</DependentUpon>
     </Compile>
@@ -193,10 +190,6 @@
     <Compile Include="View\Stage_4V.xaml.cs">
       <DependentUpon>Stage_4V.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\AnswerV.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\FinalizeV.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -275,6 +268,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>kursahEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Model\kursahEntities.edmx.diagram">
       <DependentUpon>kursahEntities.edmx</DependentUpon>
     </None>

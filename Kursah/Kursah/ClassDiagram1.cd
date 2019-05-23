@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Kursah.Common.BoolToVisibleConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BoolToVisibleConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.Common.BoolToVisibleInvertedConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BoolToVisibleInvertedConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.Common.Errors" Collapsed="true">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAAAAAQAAAAgAAAAAAAAAIAAAAAIAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Common\Errors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Common.Lists" Collapsed="true">
+    <Position X="5.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Common\Lists.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Common.Queries" Collapsed="true">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAA=</HashCode>
+      <FileName>Common\Queries.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Answers" Collapsed="true">
+    <Position X="5.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgDQAAAAAAAABAAA=</HashCode>
+      <FileName>Model\Answers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.GoodsCounts" Collapsed="true">
+    <Position X="10.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAASAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Model\GoodsCounts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.GoodsMaxPrice" Collapsed="true">
+    <Position X="12.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Model\GoodsMaxPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.kursahEntities" Collapsed="true">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAACAUAAICAAAAACAAEAAAAAAAAAAAAACAACA=</HashCode>
+      <FileName>Model\kursahEntities.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Goods" Collapsed="true">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Goods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Goods_prices" Collapsed="true">
+    <Position X="9" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Goods_prices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Offers" Collapsed="true">
+    <Position X="7.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Offers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Offers_goods" Collapsed="true">
+    <Position X="9" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAABAAAAAAAAgAAAAAAAAAAAAEAAgA=</HashCode>
+      <FileName>Model\Offers_goods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Payment_types" Collapsed="true">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Payment_types.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Provide_offers_goods" Collapsed="true">
+    <Position X="12.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACIAAAAgAAAAAAAAAAAAAAAAAAAAAIAAAAQgA=</HashCode>
+      <FileName>Model\Provide_offers_goods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Providers" Collapsed="true">
+    <Position X="5.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Providers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.SmallestTotal" Collapsed="true">
+    <Position X="7.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAAQACAAA=</HashCode>
+      <FileName>Model\SmallestTotal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Stage_1_1M" Collapsed="true">
+    <Position X="9" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAEBCEAACAAACAAAAAAAAAgAAAQAAAAAA=</HashCode>
+      <FileName>Model\Stage_1_1M.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Stage_1_2M" Collapsed="true">
+    <Position X="10.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAAAgAEBCAAACQAACAAAAAAAAAgAAAQAAAAAA=</HashCode>
+      <FileName>Model\Stage_1_2M.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Stage_2M" Collapsed="true">
+    <Position X="12.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAABBBEEAAAAAQAIAEAAAAAAEAABAAAIAg=</HashCode>
+      <FileName>Model\Stage_2M.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Stage_3M" Collapsed="true">
+    <Position X="5.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAEBAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Stage_3M.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.Model.Stage_4M" Collapsed="true">
+    <Position X="7.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAEBAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Stage_4M.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.View.FinalizeV" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\FinalizeV.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.View.IntroductionV" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\IntroductionV.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.View.MainWindowV" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAEAAAAAEAAAAAAAAAAAAAAAAAAAAAQAAACA=</HashCode>
+      <FileName>View\MainWindowV.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.View.Stage_1_1V" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Stage_1_1V.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.View.Stage_1_2V" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Stage_1_2V.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.View.Stage_2V" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Stage_2V.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.View.Stage_3V" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Stage_3V.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.View.Stage_4V" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Stage_4V.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursah.ViewModel.FinalizeVM" Collapsed="true">
+    <Position X="14.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAIAAADAABAAAAEAAAAEDAAAAAAAAAAACCAAAAA=</HashCode>
+      <FileName>ViewModel\FinalizeVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.ViewModel.InitializeVM" Collapsed="true">
+    <Position X="16.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAQBAAAAAAAAAAAAAAAQAAAABAAEAAAAAAAAAQAA=</HashCode>
+      <FileName>ViewModel\InitializeVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.ViewModel.MainViewVM" Collapsed="true">
+    <Position X="18.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAIAIAAAAAAIIAQAAAAAAAAAAAAAAAIAAEkAAAAA=</HashCode>
+      <FileName>ViewModel\MainViewVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.ViewModel.Stage_1_1VM" Collapsed="true">
+    <Position X="14.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAQAAAACAAAAAAAAAYAIAAEAABAAAAAg=</HashCode>
+      <FileName>ViewModel\Stage_1_1VM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.ViewModel.Stage_1_2VM" Collapsed="true">
+    <Position X="16.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAQAAAAAAAAQAAAACAAAAAAAAAYAIAAAAABAAAAAg=</HashCode>
+      <FileName>ViewModel\Stage_1_2VM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.ViewModel.Stage_2VM" Collapsed="true">
+    <Position X="18.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAACAAAQAAAACAAAAAAAAAYAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Stage_2VM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.ViewModel.Stage_3VM" Collapsed="true">
+    <Position X="14.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAQBAAACAAAAAAAAAYAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Stage_3VM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursah.ViewModel.Stage_4VM" Collapsed="true">
+    <Position X="16.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAQAAAACAAAAAAAAAYAAAAAAAAAAAAIA=</HashCode>
+      <FileName>ViewModel\Stage_4VM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
