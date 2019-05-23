@@ -7,11 +7,7 @@ using System.IO;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
-using System.Text.RegularExpressions;
+using Microsoft.Win32;
 
 namespace Kursah.ViewModel
 {
@@ -25,7 +21,8 @@ namespace Kursah.ViewModel
         private double _stage_2MinLocal;
         private double _stage_3MinLocal;
         private double _stage_4MinLocal;
-
+        private string _error;
+        private string filePath;
 
         public double Stage_1_1MinLocal
         {
@@ -78,6 +75,17 @@ namespace Kursah.ViewModel
             }
         }
 
+        public string Error
+        {
+            get => _error;
+            set
+            {
+                _error = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         public SimpleCommand Refresh { get; set; }
         public SimpleCommand CreateDoc { get; set; }
 
@@ -99,65 +107,92 @@ namespace Kursah.ViewModel
             string filePathResult = dirResult + "/" + fileName;
             string[] fileEnd = new string[] { "docx", "doc" };
 
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-
-            if (!Directory.Exists(dirResult))
-                Directory.CreateDirectory(dirResult);
-
             CreateDoc = new SimpleCommand(() =>
             {
-                for (int i = 0; i < fileEnd.Length; i++)
-                    if (File.Exists(filePath + $".{fileEnd[i]}"))
-                    {
-                        string niceFilePath = filePath + $".{fileEnd[i]}";
-                        string niceFilePathResult = filePathResult + $".{fileEnd[i]}";
-
-                        if (File.Exists(niceFilePathResult))
-                            File.Delete(niceFilePathResult);
-
-                        File.Copy(niceFilePath, niceFilePathResult);
-
-                        Dictionary<string, string> marks = new Dictionary<string, string>()
-                        {
-                            { "Stage_1_1MinLocal", Stage_1_1MinLocal.ToString()},
-                            { "Stage_1_2MinLocal", Stage_1_2MinLocal.ToString()},
-                            { "Stage_2MinLocal", Stage_2MinLocal.ToString()},
-                            { "Stage_3MinLocal", Stage_3MinLocal.ToString()},
-                            { "Date", DateTime.Now.ToLongDateString()}
-                        };
-
-                        try
-                        {
-                            using (WordprocessingDocument document = WordprocessingDocument.Open(niceFilePathResult, true))
-                            {
-                                Body documentBody = document.MainDocumentPart.Document.Body;
-                                List<Paragraph> paragraphsWithMarks = documentBody.Descendants<Paragraph>().Where(x => Regex.IsMatch(x.InnerText, @".*\[\w+\].*")).ToList();
-                                foreach (Paragraph paragraph in paragraphsWithMarks)
-                                {
-                                    foreach (Match markMatch in Regex.Matches(paragraph.InnerText, @"\[\w+\]", RegexOptions.Compiled))
-                                    {
-
-                                        string paragraphMarkValue = markMatch.Value.Trim(new[] { '[', ']' });
-                                        string markValueFromCollection;
-                                        if (marks.TryGetValue(paragraphMarkValue, out markValueFromCollection))
-                                        {
-                                            string editedParagraphText = paragraph.InnerText.Replace(markMatch.Value, markValueFromCollection);
-                                            paragraph.RemoveAllChildren<Run>();
-                                            paragraph.AppendChild<Run>(new Run(new Text(editedParagraphText)));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            NLog.LogManager.GetCurrentClassLogger().Error($"Ошибка записи данных в документ: \r\n{ex}");
-                        }
-
-                        break;
-                    }
+                Lists.MainWindow.Answers.FinalizeA = Lists.MainWindow.Answer;
+                CreateDocument();
             });
+        }
+
+        public bool SaveFileDialog()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Word files(*.docx)|*.docx";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                filePath = saveFileDialog.FileName;
+                return true;
+            }
+            return false;
+        }
+
+        private void CreateDocument()
+        {
+            try
+            {
+                Error = Errors.Normal;
+
+                Word.Application winword = new Word.Application();
+
+                winword.ShowAnimation = false;
+                winword.Visible = false;
+
+                object missing = Missing.Value;
+
+                Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
+                para1.Range.Text = "Вывод о расчете на основе коммерческих предложений:";
+                para1.Range.InsertParagraphAfter();
+
+                Word.Paragraph para11 = document.Content.Paragraphs.Add(ref missing);
+                para11.Range.Text = Lists.MainWindow.Answers.Stage_1_1A;
+                para11.Range.InsertParagraphAfter();
+
+                Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
+                para2.Range.Text = "Вывод о расчете на основе коммерческих предложений с дополнительными параметрами:";
+                para2.Range.InsertParagraphAfter();
+
+                Word.Paragraph para22 = document.Content.Paragraphs.Add(ref missing);
+                para22.Range.Text = Lists.MainWindow.Answers.Stage_1_2A;
+                para22.Range.InsertParagraphAfter();
+
+                Word.Paragraph para3 = document.Content.Paragraphs.Add(ref missing);
+                para3.Range.Text = "Вывод о расчете на основе реестра контрактов:";
+                para3.Range.InsertParagraphAfter();
+
+                Word.Paragraph para33 = document.Content.Paragraphs.Add(ref missing);
+                para33.Range.Text = Lists.MainWindow.Answers.Stage_2A;
+                para33.Range.InsertParagraphAfter();
+
+                Word.Paragraph para4 = document.Content.Paragraphs.Add(ref missing);
+                para4.Range.Text = "Вывод о расчете на основе значений из базы данных ценовых показателей:";
+                para4.Range.InsertParagraphAfter();
+
+                Word.Paragraph para44 = document.Content.Paragraphs.Add(ref missing);
+                para44.Range.Text = Lists.MainWindow.Answers.Stage_3A;
+                para44.Range.InsertParagraphAfter();
+
+                Word.Paragraph para5 = document.Content.Paragraphs.Add(ref missing);
+                para5.Range.Text = "Вывод о проделанной работе:";
+                para5.Range.InsertParagraphAfter();
+
+                Word.Paragraph para55 = document.Content.Paragraphs.Add(ref missing);
+                para55.Range.Text = Lists.MainWindow.Answers.FinalizeA;
+                para55.Range.InsertParagraphAfter();
+
+                SaveFileDialog();
+
+                document.SaveAs2(filePath);
+                document.Close(ref missing, ref missing, ref missing);
+                document = null;
+                winword.Quit(ref missing, ref missing, ref missing);
+                winword = null;
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
         }
     }
 }

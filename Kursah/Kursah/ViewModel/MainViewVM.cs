@@ -26,6 +26,7 @@ namespace Kursah.ViewModel
             Stage_4_Context = new Stage_4VM();
             FinalizeContext = new FinalizeVM();
 
+            Answers = new Answers();
 
             RefreshData = new SimpleCommand(() =>
             {
@@ -39,6 +40,8 @@ namespace Kursah.ViewModel
         public Stage_3VM Stage_3_Context { get; set; }
         public Stage_4VM Stage_4_Context { get; set; }
         public FinalizeVM FinalizeContext { get; set; }
+
+        public Answers Answers { get; set; }
 
         public string Answer { get; set; }
 

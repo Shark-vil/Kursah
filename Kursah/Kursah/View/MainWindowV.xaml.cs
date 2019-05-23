@@ -3,6 +3,8 @@ using Kursah.Model;
 using System.Windows.Controls;
 using System.Windows;
 
+using Kursah.Common;
+
 namespace Kursah.View
 {
     /// <summary>
@@ -11,8 +13,6 @@ namespace Kursah.View
     public partial class MainWindowV : Window
     {
         private int radioButtonNum;
-
-        public static bool CanGo { get; set; }
 
         public MainWindowV()
         {
@@ -25,7 +25,7 @@ namespace Kursah.View
             set
             {
                 radioButtonNum = value;
-                switch (radioButtonNum)
+                switch (value)
                 {
                     case 1:
                         IntroductionRB.IsChecked = true;
@@ -43,71 +43,82 @@ namespace Kursah.View
                         Stage_3_RB.IsChecked = true;
                         break;
                     case 6:
-                        //Stage_4_RB.IsChecked = true;
-                        RadioButtonNum = RadioButtonNum + 1;
-                        break;
-                    case 7:
                         FinalizeRB.IsChecked = true;
                         break;
                     default:
                         IntroductionRB.IsChecked = true;
                         break;
                 }
-
             }
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            RadioButtonNum = RadioButtonNum + 1;
+            RadioButtonNum++;
         }
 
-        private void RadioButtonsChecked(object sender, RoutedEventArgs e)
+        private void RadioButtonsUnchecked(object sender, RoutedEventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
-
             switch (rb.Name)
             {
                 case "IntroductionRB":
-                    RadioButtonNum = 1;
                     break;
                 case "Stage_1_1_RB":
-                    Answers.Stage_1_1A = AnswerTextBox.Text;
+                    Lists.MainWindow.Answers.Stage_1_1A = AnswerTextBox.Text;
                     AnswerTextBox.Clear();
-                    AnswerTextBox.Text = Answers.Stage_1_2A;
-                    RadioButtonNum = 2;
                     break;
                 case "Stage_1_2_RB":
-                    Answers.Stage_1_2A = AnswerTextBox.Text;
+                    Lists.MainWindow.Answers.Stage_1_2A = AnswerTextBox.Text;
                     AnswerTextBox.Clear();
-                    AnswerTextBox.Text = Answers.Stage_2A;
-                    RadioButtonNum = 3;
                     break;
                 case "Stage_2_RB":
-                    Answers.Stage_2A = AnswerTextBox.Text;
+                    Lists.MainWindow.Answers.Stage_2A = AnswerTextBox.Text;
                     AnswerTextBox.Clear();
-                    AnswerTextBox.Text = Answers.Stage_3A;
-                    RadioButtonNum = 4;
                     break;
                 case "Stage_3_RB":
-                    Answers.Stage_3A = AnswerTextBox.Text;
+                    Lists.MainWindow.Answers.Stage_3A = AnswerTextBox.Text;
                     AnswerTextBox.Clear();
-                    AnswerTextBox.Text = Answers.Stage_4A;
-                    RadioButtonNum = 5;
-                    break;
-                case "Stage_4_RB":
-                    Answers.Stage_4A = AnswerTextBox.Text;
-                    AnswerTextBox.Clear();
-                    AnswerTextBox.Text = Answers.FinalizeA;
-                    RadioButtonNum = 6;
                     break;
                 case "FinalizeRB":
-                    Answers.FinalizeA = AnswerTextBox.Text;
+                    Lists.MainWindow.Answers.FinalizeA = AnswerTextBox.Text;
                     AnswerTextBox.Clear();
-                    RadioButtonNum = 7;
                     break;
                 default:
-                    RadioButtonNum = 1;
+                    break;
+            }
+        }
+
+        private void IntroductionRB_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            switch (rb.Name)
+            {
+                case "IntroductionRB":
+                    radioButtonNum = 1;
+                    break;
+                case "Stage_1_1_RB":
+                    radioButtonNum = 2;
+                    AnswerTextBox.Text = Lists.MainWindow.Answers.Stage_1_1A;
+                    break;
+                case "Stage_1_2_RB":
+                    radioButtonNum = 3;
+                    AnswerTextBox.Text = Lists.MainWindow.Answers.Stage_1_2A;
+                    break;
+                case "Stage_2_RB":
+                    radioButtonNum = 4;
+                    AnswerTextBox.Text = Lists.MainWindow.Answers.Stage_2A;
+                    break;
+                case "Stage_3_RB":
+                    radioButtonNum = 5;
+                    AnswerTextBox.Text = Lists.MainWindow.Answers.Stage_3A;
+                    break;
+                case "FinalizeRB":
+                    radioButtonNum = 6;
+                    AnswerTextBox.Text = Lists.MainWindow.Answers.FinalizeA;
+                    break;
+                default:
+                    radioButtonNum = 1;
                     break;
             }
         }
