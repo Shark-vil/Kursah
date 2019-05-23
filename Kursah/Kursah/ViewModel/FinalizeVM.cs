@@ -127,25 +127,32 @@ namespace Kursah.ViewModel
                             { "Date", DateTime.Now.ToLongDateString()}
                         };
 
-                        using (WordprocessingDocument document = WordprocessingDocument.Open(niceFilePathResult, true))
+                        try
                         {
-                            Body documentBody = document.MainDocumentPart.Document.Body;
-                            List<Paragraph> paragraphsWithMarks = documentBody.Descendants<Paragraph>().Where(x => Regex.IsMatch(x.InnerText, @".*\[\w+\].*")).ToList();
-                            foreach (Paragraph paragraph in paragraphsWithMarks)
+                            using (WordprocessingDocument document = WordprocessingDocument.Open(niceFilePathResult, true))
                             {
-                                foreach (Match markMatch in Regex.Matches(paragraph.InnerText, @"\[\w+\]", RegexOptions.Compiled))
+                                Body documentBody = document.MainDocumentPart.Document.Body;
+                                List<Paragraph> paragraphsWithMarks = documentBody.Descendants<Paragraph>().Where(x => Regex.IsMatch(x.InnerText, @".*\[\w+\].*")).ToList();
+                                foreach (Paragraph paragraph in paragraphsWithMarks)
                                 {
-
-                                    string paragraphMarkValue = markMatch.Value.Trim(new[] { '[', ']' });
-                                    string markValueFromCollection;
-                                    if (marks.TryGetValue(paragraphMarkValue, out markValueFromCollection))
+                                    foreach (Match markMatch in Regex.Matches(paragraph.InnerText, @"\[\w+\]", RegexOptions.Compiled))
                                     {
-                                        string editedParagraphText = paragraph.InnerText.Replace(markMatch.Value, markValueFromCollection);
-                                        paragraph.RemoveAllChildren<Run>();
-                                        paragraph.AppendChild<Run>(new Run(new Text(editedParagraphText)));
+
+                                        string paragraphMarkValue = markMatch.Value.Trim(new[] { '[', ']' });
+                                        string markValueFromCollection;
+                                        if (marks.TryGetValue(paragraphMarkValue, out markValueFromCollection))
+                                        {
+                                            string editedParagraphText = paragraph.InnerText.Replace(markMatch.Value, markValueFromCollection);
+                                            paragraph.RemoveAllChildren<Run>();
+                                            paragraph.AppendChild<Run>(new Run(new Text(editedParagraphText)));
+                                        }
                                     }
                                 }
                             }
+                        }
+                        catch (Exception ex)
+                        {
+                            NLog.LogManager.GetCurrentClassLogger().Error($"Ошибка записи данных в документ: \r\n{ex}");
                         }
 
                         break;
