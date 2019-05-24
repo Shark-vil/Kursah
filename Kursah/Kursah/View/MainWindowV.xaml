@@ -143,6 +143,7 @@
                 Grid.Column="0"
                 Height="110"
                 Name="AnswerTextBox"
+                Text="{Binding Answer, Mode=TwoWay}"
                 Visibility="{Binding ElementName=IntroductionRB, Path=IsChecked, Converter={StaticResource BoolVisibleInverted}}"/>
             <Button 
                 Name="NextButton"

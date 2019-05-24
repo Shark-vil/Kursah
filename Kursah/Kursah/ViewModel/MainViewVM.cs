@@ -12,6 +12,7 @@ namespace Kursah.ViewModel
     public class MainViewVM : ViewModelBase
     {
         private bool _canContinueLocal;
+        private string _answer;
 
         public MainViewVM()
         {
@@ -43,7 +44,16 @@ namespace Kursah.ViewModel
 
         public Answers Answers { get; set; }
 
-        public string Answer { get; set; }
+        public string Answer
+        {
+            get => _answer;
+            set
+            {
+                _answer = value;
+
+                OnPropertyChanged();
+            }
+        }
 
         public bool CanContinueLocal
         {
