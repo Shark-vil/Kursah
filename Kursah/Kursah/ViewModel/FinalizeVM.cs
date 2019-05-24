@@ -134,7 +134,7 @@ namespace Kursah.ViewModel
 
                 Word.Application winword = new Word.Application();
 
-                winword.ShowAnimation = false;
+                //winword.ShowAnimation = false;
                 winword.Visible = false;
 
                 object missing = Missing.Value;
@@ -146,7 +146,8 @@ namespace Kursah.ViewModel
                 para1.Range.InsertParagraphAfter();
 
                 Word.Paragraph para11 = document.Content.Paragraphs.Add(ref missing);
-                para11.Range.Text = Lists.MainWindow.Answers.Stage_1_1A;
+                //para11.Range.Text = Lists.MainWindow.Answers.Stage_1_1A;
+                para11.Range.Text = Stage_1_1MinLocal.ToString();
                 para11.Range.InsertParagraphAfter();
 
                 Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
@@ -154,7 +155,8 @@ namespace Kursah.ViewModel
                 para2.Range.InsertParagraphAfter();
 
                 Word.Paragraph para22 = document.Content.Paragraphs.Add(ref missing);
-                para22.Range.Text = Lists.MainWindow.Answers.Stage_1_2A;
+                //para22.Range.Text = Lists.MainWindow.Answers.Stage_1_2A;
+                para22.Range.Text = Stage_1_2MinLocal.ToString();
                 para22.Range.InsertParagraphAfter();
 
                 Word.Paragraph para3 = document.Content.Paragraphs.Add(ref missing);
@@ -162,7 +164,8 @@ namespace Kursah.ViewModel
                 para3.Range.InsertParagraphAfter();
 
                 Word.Paragraph para33 = document.Content.Paragraphs.Add(ref missing);
-                para33.Range.Text = Lists.MainWindow.Answers.Stage_2A;
+                //para33.Range.Text = Lists.MainWindow.Answers.Stage_2A;
+                para33.Range.Text = Stage_2MinLocal.ToString();
                 para33.Range.InsertParagraphAfter();
 
                 Word.Paragraph para4 = document.Content.Paragraphs.Add(ref missing);
@@ -170,7 +173,8 @@ namespace Kursah.ViewModel
                 para4.Range.InsertParagraphAfter();
 
                 Word.Paragraph para44 = document.Content.Paragraphs.Add(ref missing);
-                para44.Range.Text = Lists.MainWindow.Answers.Stage_3A;
+                //para44.Range.Text = Lists.MainWindow.Answers.Stage_3A;
+                para44.Range.Text = Stage_3MinLocal.ToString();
                 para44.Range.InsertParagraphAfter();
 
                 Word.Paragraph para5 = document.Content.Paragraphs.Add(ref missing);

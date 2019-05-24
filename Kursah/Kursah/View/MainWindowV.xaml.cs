@@ -1,6 +1,4 @@
-﻿using NLog;
-using Kursah.Model;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows;
 
 using Kursah.Common;
