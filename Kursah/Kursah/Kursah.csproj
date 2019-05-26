@@ -162,6 +162,7 @@
     <Compile Include="Model\Stage_2M.cs" />
     <Compile Include="Model\Stage_3M.cs" />
     <Compile Include="Model\Stage_4M.cs" />
+    <Compile Include="ViewModel\CustomParams_VM.cs" />
     <Compile Include="ViewModel\FinalizeVM.cs" />
     <Compile Include="ViewModel\InitializeVM.cs" />
     <Compile Include="ViewModel\Stage_1_1VM.cs" />
@@ -169,6 +170,9 @@
     <Compile Include="ViewModel\Stage_2VM.cs" />
     <Compile Include="ViewModel\Stage_3VM.cs" />
     <Compile Include="ViewModel\Stage_4VM.cs" />
+    <Compile Include="View\CustomParams_V.xaml.cs">
+      <DependentUpon>CustomParams_V.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FinalizeV.xaml.cs">
       <DependentUpon>FinalizeV.xaml</DependentUpon>
     </Compile>
@@ -190,6 +194,10 @@
     <Compile Include="View\Stage_4V.xaml.cs">
       <DependentUpon>Stage_4V.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\CustomParams_V.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FinalizeV.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -18,6 +18,8 @@ namespace Kursah.ViewModel
         {
             kursahEntities.Start();
 
+            CustomParams_Context = new CustomParams_VM();
+
             IntroductionContext = new InitializeVM();
 
             Stage_1_1_Context = new Stage_1_1VM();
@@ -34,6 +36,7 @@ namespace Kursah.ViewModel
             });
         }
 
+        public CustomParams_VM CustomParams_Context { get; set; }
         public InitializeVM IntroductionContext { get; set; }
         public Stage_1_1VM Stage_1_1_Context { get; set; }
         public Stage_1_2VM Stage_1_2_Context { get; set; }

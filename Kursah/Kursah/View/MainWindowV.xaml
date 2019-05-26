@@ -26,6 +26,16 @@
                     Orientation="Horizontal"
                     Height="34">
                     <RadioButton
+                        Name="CustomParams"
+                        Style="{StaticResource MaterialDesignTabRadioButton}"
+                        BorderThickness="0 0 0 2"
+                        GroupName="Pages"
+                        IsChecked="False"
+                        Content="Произвольные параметры"
+                        Unchecked="RadioButtonsUnchecked"
+                        Checked="IntroductionRB_Checked"
+                        Command="{Binding RefreshData}"/>
+                    <RadioButton
                         Name="IntroductionRB"
                         Style="{StaticResource MaterialDesignTabRadioButton}"
                         BorderThickness="0 0 0 2"
@@ -100,6 +110,9 @@
         </md:ColorZone>
         <Grid
             Grid.Row="1">
+            <local:CustomParams_V
+                DataContext="{Binding CustomParams_Context, Mode=OneTime}"
+                Visibility="{Binding ElementName=CustomParams_RB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>
             <local:IntroductionV
                 DataContext="{Binding IntroductionContext, Mode=OneTime}"
                 Visibility="{Binding ElementName=IntroductionRB, Path=IsChecked, Converter={StaticResource BoolVisible}}"/>
